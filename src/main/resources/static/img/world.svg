@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Hola Mundo</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
-<body>
-
-    <nav>
-
-
-
-        
-    </nav>
-
-
-  <main>
-
-<div class="mapa-mundi">
-
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created for MapSVG plugin: http://mapsvg.com -->
 <svg
    xmlns:mapsvg="http://mapsvg.com"
@@ -1055,9 +1035,3 @@
      title="Zimbabwe"
      id="ZW" />
 </svg>
-
-</div>
-</main>  
-
-</body>
-</html>
