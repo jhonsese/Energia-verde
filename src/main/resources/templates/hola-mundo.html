@@ -1082,9 +1082,71 @@
 </div>
 
 <button onclick="toggleTexto()">Mostrar/Ocultar Texto</button>
+
 <div id="texto">Este es el texto que se despliega con una animación suave.</div>
 
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta adipisci ipsa pariatur optio at, maiores, dignissimos, molestiae animi cum inventore id libero neque alias veniam a numquam sint dolor aliquam?</p>
+<div class="table-container">
+   <div class="search-container2">
+      <input type="text" class="search-input2" placeholder="Filtrar data...">
+      <button class="search-button2">🔍</button>
+  </div>
+   <table>
+       <thead>
+           <tr>
+               <th>PAÍS</th>
+               <th>TIEMPO</th>
+               <th>BALANCE</th>
+               <th>PRODUCTO</th>
+               <th>VALOR</th>
+               <th>UNIDAD</th>
+           </tr>
+       </thead>
+       <tbody>
+           <!-- Filas vacías para ser llenadas dinámicamente -->
+            <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+           </tr>
+       </tbody>
+   </table>
+</div>
+
 <script>
     function toggleTexto() {
         var texto = document.getElementById("texto");
