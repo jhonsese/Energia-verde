@@ -1059,27 +1059,44 @@
      title="Zimbabwe"
      id="ZW" />
 </svg>
-<script>
-   document.addEventListener("DOMContentLoaded", function() {
-       const svg = document.getElementById('mySvg');
-       const paths = svg.querySelectorAll('path');
+</div>
+</main>  
 
-       paths.forEach(path => {
-           const title = path.getAttribute('title');
-           if (title) {
-               const link = document.createElementNS('http://www.w3.org/2000/svg', 'a');
-               link.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:title', title);
-               link.innerHTML = path.outerHTML + `</a>`;
-               path.replaceWith(link);
-           }
-       });
-   });
-</script>
+<div class="Presentacion">
+   <h2 class="Sub-1"><br>Nuestro proyecto<br></h3>
+   <p class="Sub-2">Nuestro proyecto consiste en la creación de una página web que permita a los usuarios visualizar información sobre los países de África. La página web contará con un mapa interactivo en el que se podrán seleccionar los países para obtener información detallada sobre ellos. Además, la página web incluirá una sección de noticias relacionadas con África y un apartado de contacto para que los usuarios puedan enviar sus comentarios y sugerencias.<br></p>
 
+   <h3 class="Sub-1"><br>Objetivo principal<br></h3>
+   <p class="Sub-2">Analizar datos para brindar conclusiones a nivel continente de uso y producción de energías “limpias”, respecto al consumo de fuentes no convencionales.<br>
+   </p >
+   <h3 class="Sub-1"><br>Objetivos secundarios<br>
+   </h3>
+   <p class="Sub-2">Brindar recomendaciones de forma integral sobre qué tanto hay que mejorar la generación de estas, respecto a las medidas implementadas en el continente y con los estándares establecidos mediante las potencias en generación.<br><br>
+
+      Obtener información respecto al uso de los diferentes tipos de energía en las diferentes regiones, incluyendo fuentes renovables como convencionales, el consumo de energía en los continentes y adicionalmente poder determinar mediante estos parámetros el acceso de energía en las diferentes regiones. <br><br>
+      
+      Realizar un listado comparativo por continente de los diferentes países que lo componen respecto a porcentaje de energía limpia producida en el país y su cantidad consumida, incluyendo la media de la región.<br><br><br>
+      </p>
 
 
 </div>
-</main>  
+
+<button onclick="toggleTexto()">Mostrar/Ocultar Texto</button>
+<div id="texto">Este es el texto que se despliega con una animación suave.</div>
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta adipisci ipsa pariatur optio at, maiores, dignissimos, molestiae animi cum inventore id libero neque alias veniam a numquam sint dolor aliquam?</p>
+<script>
+    function toggleTexto() {
+        var texto = document.getElementById("texto");
+        if (texto.style.maxHeight === "0px" || texto.style.maxHeight === "") {
+            texto.style.maxHeight = "100px"; /* Ajusta según el contenido */
+            texto.style.padding = "10px";
+        } else {
+            texto.style.maxHeight = "0px";
+            texto.style.padding = "0 10px";
+        }
+    }
+</script>
 
 
 </body>

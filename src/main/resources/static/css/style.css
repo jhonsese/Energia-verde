@@ -58,3 +58,68 @@ main{
     cursor: pointer;    
 }
 
+.Presentacion{
+    background-color: rgba(245, 245, 220, 0.377);
+    margin: 3%;
+    border-radius:  40px;;
+}
+.Sub-1{
+
+    margin-left: 5%;
+
+}
+
+.Sub-2{
+
+    margin: 0 5%;
+    margin-top: 1%;
+}
+
+ul, ol {
+    list-style:none;
+}
+
+.nav > li {
+    float:left;
+}
+
+.nav li a {
+    background-color:#000;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 12px;
+    display:block;
+}
+
+.nav li a:hover {
+    background-color:#434343;
+}
+
+.nav li ul {
+    display:none;
+    position:absolute;
+    min-width:140px;
+}
+
+.nav li:hover > ul {
+    display:block;
+}
+
+.nav li ul li {
+    position:relative;
+}
+
+.nav li ul li ul {
+    right:-140px;
+    top:0px;
+}
+
+#texto {
+    max-height: 0; /* Oculto al inicio */
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+    background: #f1f1f1;
+    padding: 0 10px; /* Se ajusta con la animación */
+    border: 1px solid #ccc;
+    width: 200px;
+}
