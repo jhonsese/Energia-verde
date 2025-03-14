@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @SpringBootApplication
 public class DemospringApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemospringApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DemospringApplication.class, args);
+    }
 
-	@GetMapping("/hola")
-	public String holaMundo() {
-		return "hola-mundo";
-	}
+    @GetMapping("/hola")
+    public String holaMundo() {
+        return "hola-mundo";
+    }
 }
