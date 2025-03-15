@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Datos Energía</title>
+</head>
+<body>
+<h1>Datos Energía</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>País</th>
+        <th>Fecha</th>
+        <th>Balance</th>
+        <th>Producto</th>
+        <th>Valor</th>
+        <th>Unidad</th>
+    </tr>
+    <tr th:each="usuario : ${usuarios}">
+        <td th:text="${usuario.id}"></td>
+        <td th:text="${usuario.country}"></td>
+        <td th:text="${usuario.time}"></td>
+        <td th:text="${usuario.balance}"></td>
+        <td th:text="${usuario.product}"></td>
+        <td th:text="${usuario.value}"></td>
+        <td th:text="${usuario.unit}"></td>
+    </tr>
+</table>
+</body>
+</html>
