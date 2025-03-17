@@ -1,7 +1,7 @@
-<!pageTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hola Mundo</title>
+    <title>Green Hause</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -9,7 +9,7 @@
     <nav class="search-container">
       
          <input type="text" class="search-input" placeholder="Buscar...">
-         <button class="search-button">🔍</button>
+         <button class="search-button">🔎</button>
      
     </nav>
 
@@ -1081,122 +1081,332 @@
 
 </div>
 
-<button onclick="toggleTexto()">Mostrar/Ocultar Texto</button>
-
-<div id="texto">Este es el texto que se despliega con una animación suave.</div>
-
-<div class="table-container">
-    <div class="search-container2">
-        <select id="region-filter" onchange="cargarPaises()">
-            <option value="">Seleccione una región</option>
-        </select>
-    
-        <select id="country-filter">
-            <option value="">Seleccione un país</option>
-        </select>
-    
-        <select id="product-filter">
-            <option value="">Seleccione un producto</option>
-        </select>
-    
-        <button onclick="filtrarTabla()">Filtrar</button>
-    </div>
-
-    <table border="1">
-        <thead>
+<table>
+   <caption><h2>Valores referentes a paises</h2> </caption>
+   <tr>
+      <td>
+         <button onclick="toggleTexto('Sur1')", class="Nombres">Sur america</button>
+         <div id="Sur1", class="datos-arriba">
+            <table>
+               <tr>
+                  <td style="text-align: left;">
+                     <p>Energia Total</p>
+                     <p>Energia Usada</p>
+                     <p>Energia Solar</p>
+                     <p>Energia Eolica</p>
+                     <p>Energia Nuclear</p>
+                     <p>EnergiaHidraulica</p>
+                  </td>
+                  <td style="text-align: right;">
+                     <p>Total</p>
+                     <p>Consumida</p>
+                     <p>Solar</p>
+                     <p>Eolica</p>
+                     <p>Nuclear</p>
+                     <p>Hidraulica</p>
+                  </td>
+               </tr>
+            </table>
+         </div>
+      </td>
+      <td>
+         <button onclick="toggleTexto('Centro1')", class="Nombres">Centro america</button>
+         <div id="Centro1", class="datos-arriba"><table>
             <tr>
-                <th>ID</th>
-                <th>País</th>
-                <th>Fecha</th>
-                <th>Balance</th>
-                <th>Producto</th>
-                <th>Valor</th>
-                <th>Unidad</th>
+               <td style="text-align: left;">
+                  <p>Energia Total</p>
+                  <p>Energia Usada</p>
+                  <p>Energia Solar</p>
+                  <p>Energia Eolica</p>
+                  <p>Energia Nuclear</p>
+                  <p>EnergiaHidraulica</p>
+               </td>
+               <td style="text-align: right;">
+                  <p>Total</p>
+                  <p>Consumida</p>
+                  <p>Solar</p>
+                  <p>Eolica</p>
+                  <p>Nuclear</p>
+                  <p>Hidraulica</p>
+               </td>
             </tr>
-        </thead>
-        <tbody id="tabla-usuarios">
-            <!-- Los datos se cargarán aquí dinámicamente -->
-        </tbody>
-    </table>
+         </table></div>
+      </td>
+      <td>
+         <button onclick="toggleTexto('Norte1')", class="Nombres">Norte america</button>
+         <div id="Norte1", class="datos-arriba"><table>
+            <tr>
+               <td style="text-align: left;">
+                  <p>Energia Total</p>
+                  <p>Energia Usada</p>
+                  <p>Energia Solar</p>
+                  <p>Energia Eolica</p>
+                  <p>Energia Nuclear</p>
+                  <p>EnergiaHidraulica</p>
+               </td>
+               <td style="text-align: right;">
+                  <p>Total</p>
+                  <p>Consumida</p>
+                  <p>Solar</p>
+                  <p>Eolica</p>
+                  <p>Nuclear</p>
+                  <p>Hidraulica</p>
+               </td>
+            </tr>
+         </table></div>
+      </td>
+      <td>
+         <button onclick="toggleTexto('Europa1')", class="Nombres">Europa</button>
+         <div id="Europa1", class="datos-arriba"><table>
+            <tr>
+               <td style="text-align: left;">
+                  <p>Energia Total</p>
+                  <p>Energia Usada</p>
+                  <p>Energia Solar</p>
+                  <p>Energia Eolica</p>
+                  <p>Energia Nuclear</p>
+                  <p>EnergiaHidraulica</p>
+               </td>
+               <td style="text-align: right;">
+                  <p>Total</p>
+                  <p>Consumida</p>
+                  <p>Solar</p>
+                  <p>Eolica</p>
+                  <p>Nuclear</p>
+                  <p>Hidraulica</p>
+               </td>
+            </tr>
+         </table></div>
+      </td>
+   
+   </tr>
+   
+</table>
 
-    <div class="pagination">
-        <button class="pagination-btn" id="prev-btn" onclick="cargarPagina(currentPage - 1)" disabled>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAASdJREFUSEvt1c8qBVEcB/DP3UlKUfIcJBtRUsozsOJBeBeeQfInUjY2VrK04QGkZGd+dUbj5nZnznRNN/fU7Oacz/l9Z87v9HQ0eh25JvCfJT92Uc9hEY+5EeVUPItbBL6Klxy8KRzoJZYTdoLdUcMzuMFSgh6wgbdRwoFepGjDucdWLhoL1Im6H73DNt5zKi3nDIOncVWp9Bo7+GiDDqs40LMi4rWEvOKgAfqMeH4dgyqewnkFzSnwqJh0ODZwbDSiPi2+8XradTSKfXzWLD8r6nLtTn6uEu/kOA3Co4FstjnLw85x9XP2t8xW3asJHJuISyIaStmvj7FX82f78VpTuMTjWpzHCqKxNB45cCBxFy/gqbGYJuTCud73vAncOsK6C/y/qL8A7fIwH4fIKgYAAAAASUVORK5CYII="/> 
-        <span>Anterior</span>
-        </button>
-        
-        <span id="pagination-info">
-            Página <input type="number" id="page-input" min="1" class="page-input"> de <span id="total-pages">X</span>
-        </span>
 
-        <button class="pagination-btn" id="next-btn" onclick="cargarPagina(currentPage + 1)">
-            <span>Siguiente</span>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAR9JREFUSEvt1cEqRVEUxvHfHZKUKRNjJiYmSiIleQJPw3uYewcldWMi8hhkQJQw1KqtrhPn7GNf95C764zO2ue/v+98a+2ejlavI64xeGTO/1mrF3GD+7ZWlSiexQXusIrHNvAS8CF2E+wSm23gJeAZnGApwa+whqcc5SXg+P40jrGcYOdJeSO8FBy8qaR8EL6B5zrlwwC/w4+wkmBn2KqDN4HnEU/OmsQBIu2xThP85bPNTeB97OVQv6iJ8O3gtfr+14LbWD2RrJ5L6vrYxresznU5oNFWQwtXDjjaaTDR0cs/3k6dDJDqyMyeWmFjU6rrrK5eEuu5c7oUHOkNlbfpn47sWoyDL+AaDzkpHKwpsbot60P9GFxkX5vN/8/qNxVZNB8T8o94AAAAAElFTkSuQmCC"/>
-        </button>
-    </div>
+
+<table class="tabla-2">
+   <tr>
+      <td>
+         <button onclick="toggleTexto('Africa1')", class="Nombres">Africa</button>
+         <div id="Africa1", class="datos-abajo"><table>
+            <tr>
+               <td style="text-align: left;">
+                  <p>Energia Total</p>
+                  <p>Energia Usada</p>
+                  <p>Energia Solar</p>
+                  <p>Energia Eolica</p>
+                  <p>Energia Nuclear</p>
+                  <p>Energia Hidraulica</p>
+               </td>
+               <td style="text-align: right;">
+                  <p>Total</p>
+                  <p>Consumida</p>
+                  <p>Solar</p>
+                  <p>Eolica</p>
+                  <p>Nuclear</p>
+                  <p>Hidraulica</p>
+               </td>
+            </tr>
+         </table></div>
+      </td>
+
+      <td>
+         <button onclick="toggleTexto('Asia1')", class="Nombres">Asia</button>
+         <div id="Asia1", class="datos-abajo"><table>
+            <tr>
+               <td style="text-align: left;">
+                  <p>Energia Total</p>
+                  <p>Energia Usada</p>
+                  <p>Energia Solar</p>
+                  <p>Energia Eolica</p>
+                  <p>Energia Nuclear</p>
+                  <p>Energia Hidraulica</p>
+               </td>
+               <td style="text-align: right;">
+                  <p>Total</p>
+                  <p>Consumida</p>
+                  <p>Solar</p>
+                  <p>Eolica</p>
+                  <p>Nuclear</p>
+                  <p>Hidraulica</p>
+               </td>
+            </tr>
+         </table></div>
+      </td>
+       <td>
+         <button onclick="toggleTexto('Oceania1')" class="Nombres">Oceania</button>
+         <div id="Oceania1", class="datos-abajo"><table>
+            <tr>
+               <td style="text-align: left;">
+                  <p>Energia Total</p>
+                  <p>Energia Usada</p>
+                  <p>Energia Solar</p>
+                  <p>Energia Eolica</p>
+                  <p>Energia Nuclear</p>
+                  <p>Energia Hidraulica</p>
+               </td>
+               <td style="text-align: right;">
+                  <p>Total</p>
+                  <p>Consumida</p>
+                  <p>Solar</p>
+                  <p>Eolica</p>
+                  <p>Nuclear</p>
+                  <p>Hidraulica</p>
+               </td>
+            </tr>
+         </table></div>
+      </td>
+   </tr>
+</table>
+
+
+
+
+
+<script>
+    function toggleTexto(text) {
+        var texto = document.getElementById(text);
+        if (texto.style.maxHeight === "0px" || texto.style.maxHeight === "") {
+            texto.style.maxHeight = "200px"; /* Ajusta según el contenido */
+            texto.style.padding = "10px";
+        } else {
+            texto.style.maxHeight = "0px";
+            texto.style.padding = "0 10px";
+        }
+    }
+</script>
+
+
+</body>
+<footer>
+   <table class="p">
+      <caption style="text-align: left;"><h2>Desarrolladores:</h2></caption>
+      <tr >
+         <td>Alejandro</td>
+         <td>Alejandro</td>
+         <td>Oscar</td>
+      </tr>
+      <tr>
+         <td>Daniel</td>
+         <td>Jhoan</td>
+      </tr>      
+   </table>
+
+   <h2 class="pp">Green Hause</h2>
+</footer>
+<div class="table-container">
+   <div class="search-container2">
+       <select id="region-filter" onchange="cargarPaises()">
+           <option value="">Seleccione una región</option>
+       </select>
+   
+       <select id="country-filter">
+           <option value="">Seleccione un país</option>
+       </select>
+   
+       <select id="product-filter">
+           <option value="">Seleccione un producto</option>
+       </select>
+   
+       <button onclick="filtrarTabla()">Filtrar</button>
+   </div>
+
+   <table border="1">
+       <thead>
+           <tr>
+               <th>ID</th>
+               <th>País</th>
+               <th>Fecha</th>
+               <th>Balance</th>
+               <th>Producto</th>
+               <th>Valor</th>
+               <th>Unidad</th>
+           </tr>
+       </thead>
+       <tbody id="tabla-usuarios">
+           <!-- Los datos se cargarán aquí dinámicamente -->
+       </tbody>
+   </table>
+
+   <div class="pagination">
+       <button class="pagination-btn" id="prev-btn" onclick="cargarPagina(currentPage - 1)" disabled>
+           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAASdJREFUSEvt1c8qBVEcB/DP3UlKUfIcJBtRUsozsOJBeBeeQfInUjY2VrK04QGkZGd+dUbj5nZnznRNN/fU7Oacz/l9Z87v9HQ0eh25JvCfJT92Uc9hEY+5EeVUPItbBL6Klxy8KRzoJZYTdoLdUcMzuMFSgh6wgbdRwoFepGjDucdWLhoL1Im6H73DNt5zKi3nDIOncVWp9Bo7+GiDDqs40LMi4rWEvOKgAfqMeH4dgyqewnkFzSnwqJh0ODZwbDSiPi2+8XradTSKfXzWLD8r6nLtTn6uEu/kOA3Co4FstjnLw85x9XP2t8xW3asJHJuISyIaStmvj7FX82f78VpTuMTjWpzHCqKxNB45cCBxFy/gqbGYJuTCud73vAncOsK6C/y/qL8A7fIwH4fIKgYAAAAASUVORK5CYII="/> 
+       <span>Anterior</span>
+       </button>
+       
+       <span id="pagination-info">
+           Página <input type="number" id="page-input" min="1" class="page-input"> de <span id="total-pages">X</span>
+       </span>
+
+       <button class="pagination-btn" id="next-btn" onclick="cargarPagina(currentPage + 1)">
+           <span>Siguiente</span>
+           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAR9JREFUSEvt1cEqRVEUxvHfHZKUKRNjJiYmSiIleQJPw3uYewcldWMi8hhkQJQw1KqtrhPn7GNf95C764zO2ue/v+98a+2ejlavI64xeGTO/1mrF3GD+7ZWlSiexQXusIrHNvAS8CF2E+wSm23gJeAZnGApwa+whqcc5SXg+P40jrGcYOdJeSO8FBy8qaR8EL6B5zrlwwC/w4+wkmBn2KqDN4HnEU/OmsQBIu2xThP85bPNTeB97OVQv6iJ8O3gtfr+14LbWD2RrJ5L6vrYxresznU5oNFWQwtXDjjaaTDR0cs/3k6dDJDqyMyeWmFjU6rrrK5eEuu5c7oUHOkNlbfpn47sWoyDL+AaDzkpHKwpsbot60P9GFxkX5vN/8/qNxVZNB8T8o94AAAAAElFTkSuQmCC"/>
+       </button>
+   </div>
 </div>
 
 <script>
-    let currentPage = 0;
-    let totalPages = 1;
+   let currentPage = 0;
+   let totalPages = 1;
 
-    document.addEventListener("DOMContentLoaded", function () {
-        cargarPagina(0);
-    });
+   document.addEventListener("DOMContentLoaded", function () {
+       cargarPagina(0);
+   });
 
-    function cargarPagina(page) {
-        if (page < 0 || page >= totalPages) return;
+   function cargarPagina(page) {
+       if (page < 0 || page >= totalPages) return;
 
-        fetch(`/api/usuarios?page=${page}`)
-            .then(response => response.json())
-            .then(data => {
-                const tbody = document.getElementById("tabla-usuarios");
-                tbody.innerHTML = ""; // Limpiar contenido anterior
+       fetch(`/api/usuarios?page=${page}`)
+           .then(response => response.json())
+           .then(data => {
+               const tbody = document.getElementById("tabla-usuarios");
+               tbody.innerHTML = ""; // Limpiar contenido anterior
 
-                data.usuarios.forEach(usuario => {
-                    const row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td>${usuario.id}</td>
-                        <td>${usuario.country}</td>
-                        <td>${usuario.time}</td>
-                        <td>${usuario.balance}</td>
-                        <td>${usuario.product}</td>
-                        <td>${usuario.value}</td>
-                        <td>${usuario.unit}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
+               data.usuarios.forEach(usuario => {
+                   const row = document.createElement("tr");
+                   row.innerHTML = `
+                       <td>${usuario.id}</td>
+                       <td>${usuario.country}</td>
+                       <td>${usuario.time}</td>
+                       <td>${usuario.balance}</td>
+                       <td>${usuario.product}</td>
+                       <td>${usuario.value}</td>
+                       <td>${usuario.unit}</td>
+                   `;
+                   tbody.appendChild(row);
+               });
 
-                // Actualizar paginación
-                currentPage = data.currentPage;
-                totalPages = data.totalPages;
+               // Actualizar paginación
+               currentPage = data.currentPage;
+               totalPages = data.totalPages;
 
-                document.getElementById("page-input").value = currentPage + 1; // Mostrar número de página actual
-                document.getElementById("total-pages").textContent = totalPages;
+               document.getElementById("page-input").value = currentPage + 1; // Mostrar número de página actual
+               document.getElementById("total-pages").textContent = totalPages;
 
-                document.getElementById("prev-btn").disabled = currentPage === 0;
-                document.getElementById("next-btn").disabled = currentPage + 1 >= totalPages;
-            })
-            .catch(error => console.error("Error cargando la página:", error));
-    }
+               document.getElementById("prev-btn").disabled = currentPage === 0;
+               document.getElementById("next-btn").disabled = currentPage + 1 >= totalPages;
+           })
+           .catch(error => console.error("Error cargando la página:", error));
+   }
 
-    function irAPagina() {
-        let pageInput = document.getElementById("page-input").value;
-        let pageNumber = parseInt(pageInput, 10) - 1;
+   function irAPagina() {
+       let pageInput = document.getElementById("page-input").value;
+       let pageNumber = parseInt(pageInput, 10) - 1;
 
-        if (!isNaN(pageNumber) && pageNumber >= 0 && pageNumber < totalPages) {
-            cargarPagina(pageNumber);
-        } else {
-            alert("Número de página inválido.");
-            document.getElementById("page-input").value = currentPage + 1; // Restaurar el valor actual si es inválido
-        }
-    }
+       if (!isNaN(pageNumber) && pageNumber >= 0 && pageNumber < totalPages) {
+           cargarPagina(pageNumber);
+       } else {
+           alert("Número de página inválido.");
+           document.getElementById("page-input").value = currentPage + 1; // Restaurar el valor actual si es inválido
+       }
+   }
 
-    document.getElementById("page-input").addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            irAPagina();
-        }
-    });
+   document.getElementById("page-input").addEventListener("keypress", function (event) {
+       if (event.key === "Enter") {
+           irAPagina();
+       }
+   });
 </script>
 <script th:href="@{/assets/app.js}"></script>
-
+</html>
