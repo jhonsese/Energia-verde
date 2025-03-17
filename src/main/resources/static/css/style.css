@@ -61,7 +61,7 @@ main{
 .Presentacion{
     background-color: rgba(245, 245, 220, 0.377);
     margin: 3%;
-    border-radius:  40px;;
+    border-radius:  40px;
 }
 .Sub-1{
 
@@ -71,8 +71,10 @@ main{
 
 .Sub-2{
 
-    margin: 0 5%;
+    margin: 0 0%;
     margin-top: 1%;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 
 ul, ol {
@@ -110,16 +112,90 @@ ul, ol {
 }
 
 .nav li ul li ul {
-    right:-140px;
+    
     top:0px;
 }
+td{
+    padding: 10px;
+    text-align: center;
+    width: 10px;
+    justify-content: center;
+    
+}
 
-#texto {
+.Nombres{
+    font-size: 20px;
+    width: 100%;
+    border-radius:20px ;
+    border-color: transparent;
+
+}
+.datos-arriba{
+
     max-height: 0; /* Oculto al inicio */
     overflow: hidden;
     transition: max-height 0.5s ease-out, padding 0.3s ease-out;
-    background: #f1f1f1;
+    background: rgba(245, 245, 220, 0.377);
     padding: 0 10px; /* Se ajusta con la animación */
     border: 1px solid #ccc;
-    width: 200px;
+    width: 100%;
+    text-align: left;
+    border-radius:20px;
+}
+
+.datos-abajo{
+    max-height: 0; /* Oculto al inicio */
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+    background: rgba(245, 245, 220, 0.377);;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 0 10px; /* Se ajusta con la animación */
+    border-color: transparent;
+    border-radius:20px ;
+}
+
+table{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 0%;
+    border-collapse: collapse;
+    justify-content: center;
+}
+
+
+td{
+    padding: 10px;
+    text-align: center;
+    width: 10px;
+}
+
+footer{
+    background-color: #000;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+}
+
+.tabla-2{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+    border-collapse: collapse;
+}
+
+.p{
+    margin-left: 5%;
+    width: 20px;
+    justify-content: left;
+}
+
+.pp{
+    position: relative;
+    color: green;
+    font-size: 70px;
+    margin-left: 30%;
 }
