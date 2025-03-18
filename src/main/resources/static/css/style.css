@@ -188,6 +188,27 @@ main{
     cursor: pointer;    
 }
 
+/* Filtros  */
+.table-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    padding: 20px; 
+    position: relative; 
+    width: 80%; 
+    overflow-x: auto; 
+    margin: 0 auto; 
+}
+
+.table-wrapper {
+    width: 100%;
+    max-width: 80vw; 
+    overflow-x: auto;
+    margin: 0 auto; 
+}
+
 /* Seccion #2 */
 
 .section-2{

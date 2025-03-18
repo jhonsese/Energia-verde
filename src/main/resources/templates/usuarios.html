@@ -804,7 +804,24 @@
 
       <section class="section-2" id="section-2">
 
-         <div class="container" data-aos="fade-up-right">
+         <div class="table-container">
+            <div class="search-container2">
+               <select id="region-filter" onchange="cargarPaises()">
+                  <option value="">Seleccione una región</option>
+               </select>
+      
+               <select id="country-filter">
+                  <option value="">Seleccione un país</option>
+               </select>
+      
+               <select id="product-filter">
+                  <option value="">Seleccione un producto</option>
+               </select>
+      
+               <button onclick="filtrarTabla()">Filtrar</button>
+            </div>
+
+         <div class="container">
             <h1>Consumo y Producción</h1>
             <div class="table-wrapper">
                <table>
