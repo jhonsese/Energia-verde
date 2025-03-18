@@ -35,7 +35,13 @@
 
    <main>
 
-      <section class="mapa-mundi" id="home">
+      <section class="section-0">
+
+         <h1>ENERGIA - VERDE</h1>
+
+      </section>
+
+      <section class="section-1" id="home">
 
          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
          <!-- Created for MapSVG plugin: http://mapsvg.com -->
@@ -809,61 +815,67 @@
                <select id="region-filter" onchange="cargarPaises()">
                   <option value="">Seleccione una región</option>
                </select>
-      
+
                <select id="country-filter">
                   <option value="">Seleccione un país</option>
                </select>
-      
+
                <select id="product-filter">
                   <option value="">Seleccione un producto</option>
                </select>
-      
+
                <button onclick="filtrarTabla()">Filtrar</button>
             </div>
 
-         <div class="container">
-            <h1>Consumo y Producción</h1>
-            <div class="table-wrapper">
-               <table>
-                  <thead>
-                     <tr>
-                        <th>ID</th>
-                        <th>Pais</th>
-                        <th>Fecha</th>
-                        <th>Balance</th>
-                        <th>Producto</th>
-                        <th>Valor</th>
-                        <th>Unidad</th>
-                     </tr>
-                  </thead>
-                  <tbody>
+            <div class="container">
+               <h1>Consumo y Producción</h1>
+               <div class="table-wrapper">
+                  <table>
+                     <thead>
+                        <tr>
+                           <th>ID</th>
+                           <th>Pais</th>
+                           <th>Fecha</th>
+                           <th>Balance</th>
+                           <th>Producto</th>
+                           <th>Valor</th>
+                           <th>Unidad</th>
+                        </tr>
+                     </thead>
+                     <tbody>
                      <tbody id="tabla-usuarios">
                         <!-- Los datos se cargarán aquí dinámicamente -->
                      </tbody>
-                  </tbody>
-               </table>
+                     </tbody>
+                  </table>
 
 
-               <div class="pagination">
-                  <button class="pagination-btn" id="prev-btn" onclick="cargarPagina(currentPage - 1)" disabled>
-                     <img
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAASdJREFUSEvt1c8qBVEcB/DP3UlKUfIcJBtRUsozsOJBeBeeQfInUjY2VrK04QGkZGd+dUbj5nZnznRNN/fU7Oacz/l9Z87v9HQ0eh25JvCfJT92Uc9hEY+5EeVUPItbBL6Klxy8KRzoJZYTdoLdUcMzuMFSgh6wgbdRwoFepGjDucdWLhoL1Im6H73DNt5zKi3nDIOncVWp9Bo7+GiDDqs40LMi4rWEvOKgAfqMeH4dgyqewnkFzSnwqJh0ODZwbDSiPi2+8XradTSKfXzWLD8r6nLtTn6uEu/kOA3Co4FstjnLw85x9XP2t8xW3asJHJuISyIaStmvj7FX82f78VpTuMTjWpzHCqKxNB45cCBxFy/gqbGYJuTCud73vAncOsK6C/y/qL8A7fIwH4fIKgYAAAAASUVORK5CYII=" />
-                     <span>Anterior</span>
-                  </button>
+                  <div class="pagination">
+                     <button class="pagination-btn" id="prev-btn" onclick="cargarPagina(currentPage - 1)" disabled>
+                        <img
+                           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAASdJREFUSEvt1c8qBVEcB/DP3UlKUfIcJBtRUsozsOJBeBeeQfInUjY2VrK04QGkZGd+dUbj5nZnznRNN/fU7Oacz/l9Z87v9HQ0eh25JvCfJT92Uc9hEY+5EeVUPItbBL6Klxy8KRzoJZYTdoLdUcMzuMFSgh6wgbdRwoFepGjDucdWLhoL1Im6H73DNt5zKi3nDIOncVWp9Bo7+GiDDqs40LMi4rWEvOKgAfqMeH4dgyqewnkFzSnwqJh0ODZwbDSiPi2+8XradTSKfXzWLD8r6nLtTn6uEu/kOA3Co4FstjnLw85x9XP2t8xW3asJHJuISyIaStmvj7FX82f78VpTuMTjWpzHCqKxNB45cCBxFy/gqbGYJuTCud73vAncOsK6C/y/qL8A7fIwH4fIKgYAAAAASUVORK5CYII=" />
+                        <span>Anterior</span>
+                     </button>
 
-                  <span id="pagination-info">
-                     Página <input type="number" id="page-input" min="1" max="5" class="page-input"> de <span
-                        id="total-pages">X</span>
-                  </span>
+                     <span id="pagination-info">
+                        Página <input type="number" id="page-input" min="1" max="5" class="page-input"> de <span
+                           id="total-pages">X</span>
+                     </span>
 
-                  <button class="pagination-btn" id="next-btn" onclick="cargarPagina(currentPage + 1)">
-                     <span>Siguiente</span>
-                     <img
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAR9JREFUSEvt1cEqRVEUxvHfHZKUKRNjJiYmSiIleQJPw3uYewcldWMi8hhkQJQw1KqtrhPn7GNf95C764zO2ue/v+98a+2ejlavI64xeGTO/1mrF3GD+7ZWlSiexQXusIrHNvAS8CF2E+wSm23gJeAZnGApwa+whqcc5SXg+P40jrGcYOdJeSO8FBy8qaR8EL6B5zrlwwC/w4+wkmBn2KqDN4HnEU/OmsQBIu2xThP85bPNTeB97OVQv6iJ8O3gtfr+14LbWD2RrJ5L6vrYxresznU5oNFWQwtXDjjaaTDR0cs/3k6dDJDqyMyeWmFjU6rrrK5eEuu5c7oUHOkNlbfpn47sWoyDL+AaDzkpHKwpsbot60P9GFxkX5vN/8/qNxVZNB8T8o94AAAAAElFTkSuQmCC" />
-                  </button>
+                     <button class="pagination-btn" id="next-btn" onclick="cargarPagina(currentPage + 1)">
+                        <span>Siguiente</span>
+                        <img
+                           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAR9JREFUSEvt1cEqRVEUxvHfHZKUKRNjJiYmSiIleQJPw3uYewcldWMi8hhkQJQw1KqtrhPn7GNf95C764zO2ue/v+98a+2ejlavI64xeGTO/1mrF3GD+7ZWlSiexQXusIrHNvAS8CF2E+wSm23gJeAZnGApwa+whqcc5SXg+P40jrGcYOdJeSO8FBy8qaR8EL6B5zrlwwC/w4+wkmBn2KqDN4HnEU/OmsQBIu2xThP85bPNTeB97OVQv6iJ8O3gtfr+14LbWD2RrJ5L6vrYxresznU5oNFWQwtXDjjaaTDR0cs/3k6dDJDqyMyeWmFjU6rrrK5eEuu5c7oUHOkNlbfpn47sWoyDL+AaDzkpHKwpsbot60P9GFxkX5vN/8/qNxVZNB8T8o94AAAAAElFTkSuQmCC" />
+                     </button>
+                  </div>
                </div>
             </div>
-         </div>
+
+      </section>
+
+      <section class="section-3">
+
+         <h1>ENERGIA - VERDE</h1>
 
       </section>
    </main>
@@ -935,7 +947,7 @@
 
    <script>
       AOS.init();
-    </script>
+   </script>
 
 
 </body>
