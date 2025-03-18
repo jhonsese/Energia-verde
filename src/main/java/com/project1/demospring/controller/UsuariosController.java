@@ -20,7 +20,7 @@ public class UsuariosController {
     @GetMapping("/usuarios")
     public String listarUsuarios(Model model,
                                  @RequestParam(defaultValue = "0") int page,
-                                 @RequestParam(defaultValue = "10") int size) {
+                                 @RequestParam(defaultValue = "5") int size) {
         Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size);
 
         model.addAttribute("usuarios", paginaUsuarios.getContent());
@@ -33,7 +33,7 @@ public class UsuariosController {
     @GetMapping("/api/usuarios")
     @ResponseBody
     public ResponseEntity<?> obtenerUsuariosJSON(@RequestParam(defaultValue = "0") int page,
-                                                 @RequestParam(defaultValue = "10") int size) {
+                                                 @RequestParam(defaultValue = "5") int size) {
         Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size);
 
         return ResponseEntity.ok().body(Map.of(
