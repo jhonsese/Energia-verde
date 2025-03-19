@@ -36,7 +36,7 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
     color: rgb(255, 255, 255);
-    font-size: 18px;
+    font-size: 48px;
 }
 
 .search-container {
@@ -181,6 +181,7 @@ main{
 display: flex;
 justify-content: center;
 align-items: center;
+flex-direction: column;
 height: 25%;
 
 }
@@ -248,6 +249,7 @@ h1 {
     text-align: center;
     color: #ffffff;
     margin-bottom: 30px;
+    font-size: 50px;
 }
 
 .table-wrapper {
