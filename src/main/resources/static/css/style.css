@@ -29,7 +29,7 @@ svg {
     transform-origin: center;
 }
 
-path {
+/* path {
     transition: transform 0.2s, fill 0.2s;
     fill: #ccc;
     stroke: #000;
@@ -39,7 +39,7 @@ path:hover {
     transform: scale(1.01);
     fill: #ff5733;
     cursor: pointer;
-}
+} */
 /* Nav */
 
 /* Barra de Busqueda */
@@ -602,4 +602,14 @@ tbody tr:last-child td {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+
+        img{
+            height: 50px;
+            width: 50px;
+
         }
