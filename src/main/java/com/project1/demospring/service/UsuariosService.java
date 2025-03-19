@@ -5,15 +5,27 @@ import com.project1.demospring.repository.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UsuariosService {
 
     @Autowired
-    private UsuariosRepository usuarioRepository;
+    private UsuariosRepository usuariosRepository;
 
-    public Page<Usuarios> obtenerUsuariosPaginados(int page, int size) {
-        return usuarioRepository.findAll(PageRequest.of(page, size));
+    public List<String> obtenerPaises() {
+        return usuariosRepository.findDistinctCountries();
+    }
+
+    public List<String> obtenerProductos() {
+        return usuariosRepository.findDistinctProducts();
+    }
+
+    public Page<Usuarios> obtenerUsuariosPaginados(int page, int size, String country, String product) {
+        Pageable pageable = PageRequest.of(page, size);
+        return usuariosRepository.findByCountryAndProduct(country, product, pageable);
     }
 }
