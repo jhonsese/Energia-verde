@@ -322,10 +322,30 @@ main {
     margin: 0 auto;
 }
 
+.search-filter2 {
+    align-items: center; 
+    justify-content: center;
+    margin-left: 205px;
+    margin-bottom: 10px;
+}
+
+.search-container2 {
+    align-items: center; 
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.search-container2 select {
+    padding: 10px; 
+    margin-right: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+}
+
 /* Seccion #2 */
 
 .section-2 {
-
     width: 100%;
     height: 25%;
     display: flex;
@@ -334,9 +354,9 @@ main {
 
 }
 
-/* Tabla de la seccion 2 */
+/* Tabla de la seccion 3 */
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     background-color: white;
     border-radius: 10px;
@@ -346,7 +366,7 @@ main {
 
 h1 {
     text-align: center;
-    color: #ffffff;
+    color: #2e7d32;
     margin-bottom: 30px;
     font-size: 50px;
 }
@@ -444,7 +464,7 @@ tbody tr:last-child td {
 }
 
 .pagination-btn {
-    background-color: #ddd;
+    background-color: #2e7d32;
     color: rgb(26, 25, 25);
     padding: 10px 15px;
     font-size: 16px;
@@ -459,7 +479,7 @@ tbody tr:last-child td {
 
 .pagination-btn:hover {
     border: 1px solid #000;
-    background-color: #bbb;
+    background-color: #9fe0a3;
 }
 
 .pagination-input {

@@ -1110,7 +1110,7 @@
 
    <button class="close-btn" onclick="closeSidebar()", >Cerrar</button>
 </div>
-
+<!-- sidebar para el funcionamiento del mapa -->
 <script>
    document.querySelectorAll('svg path').forEach(path => {
        path.addEventListener('click', function() {
@@ -1128,24 +1128,22 @@
       <section class="section-2" id="section-2">
 
          <div class="table-container">
-            <div class="search-container2">
-               <select id="region-filter" onchange="cargarPaises()">
-                  <option value="">Seleccione una región</option>
-               </select>
-
-               <select id="country-filter">
-                  <option value="">Seleccione un país</option>
-               </select>
-
-               <select id="product-filter">
-                  <option value="">Seleccione un producto</option>
-               </select>
-
-               <button onclick="filtrarTabla()">Filtrar</button>
-            </div>
-
             <div class="container">
                <h1>Consumo y Producción</h1>
+               <div class="search-container2">
+                  <div class="search-filter2">
+                     <select id="region-filter" onchange="cargarPaises()">
+                         <option value="">Seleccione una región</option>
+                     </select>
+         
+                     <select id="country-filter">
+                         <option value="">Seleccione un país</option>
+                     </select>
+         
+                     <select id="product-filter">
+                         <option value="">Seleccione un producto</option>
+                     </select>
+                 </div>
                <div class="table-wrapper">
                   <table>
                      <thead>
