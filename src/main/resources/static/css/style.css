@@ -202,6 +202,29 @@ height: 25%;
     cursor: pointer;    
 }
 
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #333;
+    color: white;
+    position: fixed;
+    right: -250px;
+    top: 0;
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+}
+.sidebar.show {
+    right: 0;
+}
+.close-btn {
+    background: red;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 150%;
+    margin-left: 80%;
+}
 /* Filtros  */
 .table-container {
     display: flex;
