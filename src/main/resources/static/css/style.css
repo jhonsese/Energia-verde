@@ -8,167 +8,100 @@
 html {
     scroll-behavior: smooth;
 }
-  
+
 body {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('../img/Fondo-boot.jpg'); /* Ruta de la imagen */
-    background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../img/Fondo-boot.jpg');
+    /* Ruta de la imagen */
+    background-size: cover;
+    /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    background-attachment: fixed;
+    /* Mantiene la imagen fija al hacer scroll */
 }
 
 
 /* Nav */
 
 /* Barra de Busqueda */
-nav{
+/* Navegación */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 60px;
-    padding: 40px;
-
-
+    padding: 20px 0;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: rgb(255, 255, 255);
-    font-size: 48px;
+.container-nav{
+
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.search-container {
-    position: relative;
-    width: 50%;
-}
-
-.search-input {
-    width: 100%;
-    padding: 15px 20px 15px 50px;
-    border: 2px solid #161616;
-    border-radius: 50px;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-.search-input:focus {
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
-}
-
-.search-icon {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
-}
-
-.search-button {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #161616;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.search-button:hover {
-    background-color: #333;
-}
-
-.search-suggestions {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #666;
-}
-
-.suggestion {
-    text-decoration: underline;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.suggestion:hover {
-    color: black;
-}
-
-@media (max-width: 480px) {
-    .search-button {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
-    
-    .search-input {
-        padding: 12px 15px 12px 45px;
-        font-size: 14px;
-    }
-}
-
-.transition-effect {
-    background: linear-gradient(to bottom, #b9b9b98a, #4d5645);
-    height: 10px; /* Ajusta la altura según necesites */
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: black;
-    font-size: 28px;
-}
-
-.button-section {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 100%;
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #ffffff;
-    font-size: 20px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-}
-
-.nav-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 30px;
-}
-
-/* Style 1: Simple Square Buttons */
-.style-1 .nav-btn {
-    padding: 12px 25px;
-    background-color: white;
-    color: black;
-    border: 2px solid #161616;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2e7d32;
     text-decoration: none;
-    font-size: 14px;
+    display: flex;
+    align-items: center;
 }
 
-.style-1 .nav-btn:hover {
-    background-color: #161616;
-    color: white;
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #2e7d32;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
 }
 
-main{
+.logo-icon::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 9px;
+    width: 12px;
+    height: 18px;
+    background-color: white;
+    clip-path: polygon(0 0, 100% 25%, 100% 75%, 0 100%);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2e7d32;
+}
+
+main {
     width: 100%;
     height: 400vh;
 }
@@ -176,18 +109,159 @@ main{
 
 /* Seccion 0 - HOME */
 
-.section-0{
+/* Hero Section */
+.hero {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 0;
+    width: 100%;
+}
 
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-height: 25%;
+.container-home{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.082);
+}
 
+.hero h1 {
+    font-size: 78px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease;
+    color: #ffffff;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: white;
+    animation: fadeInUp 1s ease 0.2s;
+    animation-fill-mode: both;
+}
+
+/* Botón CTA */
+.btn-neon {
+    display: inline-block;
+    padding: 16px 32px;
+    background-color: #39ff14;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(57, 255, 20, 0.4),
+        0 0 0 4px rgba(57, 255, 20, 0.1);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeInUp 1s ease 0.4s;
+    animation-fill-mode: both;
+}
+
+.btn-neon:hover {
+    background-color: #50ff30;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(57, 255, 20, 0.5),
+        0 0 0 6px rgba(57, 255, 20, 0.15);
+}
+
+.btn-neon:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(57, 255, 20, 0.4);
+}
+
+.btn-neon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transition: 0.5s;
+}
+
+.btn-neon:hover::before {
+    left: 100%;
+}
+
+/* Sección de características */
+.features {
+    background-color: white;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    color: #ffffff;
+    font-size: 36px;
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.feature-card {
+    flex: 1 1 300px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    height: 200px;
+    background-color: #e8f5e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    color: #2e7d32;
+}
+
+.feature-icon.solar::before {
+    content: "☀️";
+}
+
+.feature-icon.wind::before {
+    content: "🌬️";
+}
+
+.feature-icon.water::before {
+    content: "💧";
+}
+
+.feature-content {
+    padding: 30px;
+}
+
+.feature-content h3 {
+    margin-bottom: 15px;
+    color: #2e7d32;
+    font-size: 24px;
 }
 
 /* Primera seccion Mapa Mundi */
-.section-1{
+.section-1 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -199,7 +273,7 @@ height: 25%;
     fill: #ffffff;
     stroke: #000000;
     stroke-width: 1;
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .sidebar {
@@ -214,7 +288,9 @@ height: 25%;
     padding: 20px;
 }
 .sidebar.show {
+ 
     right: 0;
+    z-index: 1001;
 }
 .close-btn {
     background: red;
@@ -228,27 +304,27 @@ height: 25%;
 /* Filtros  */
 .table-container {
     display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
-    padding: 20px; 
-    position: relative; 
-    width: 80%; 
-    overflow-x: auto; 
-    margin: 0 auto; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    width: 80%;
+    overflow-x: auto;
+    margin: 0 auto;
 }
 
 .table-wrapper {
     width: 100%;
-    max-width: 80vw; 
+    max-width: 80vw;
     overflow-x: auto;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 /* Seccion #2 */
 
-.section-2{
+.section-2 {
 
     width: 100%;
     height: 25%;
@@ -347,11 +423,12 @@ tbody tr:last-child td {
     .container {
         padding: 15px;
     }
-    
-    th, td {
+
+    th,
+    td {
         padding: 10px 15px;
     }
-    
+
     h1 {
         font-size: 24px;
     }
@@ -363,11 +440,11 @@ tbody tr:last-child td {
     justify-content: center;
     margin-top: 20px;
     gap: 10px;
-    position: relative; 
+    position: relative;
 }
 
 .pagination-btn {
-    background-color: #ddd; 
+    background-color: #ddd;
     color: rgb(26, 25, 25);
     padding: 10px 15px;
     font-size: 16px;
@@ -381,8 +458,8 @@ tbody tr:last-child td {
 }
 
 .pagination-btn:hover {
-    border: 1px solid #000; 
-    background-color: #bbb; 
+    border: 1px solid #000;
+    background-color: #bbb;
 }
 
 .pagination-input {
@@ -396,7 +473,7 @@ tbody tr:last-child td {
 }
 
 .pagination-btn img {
-    width: 20px; 
+    width: 20px;
     height: 20px;
 }
 
@@ -417,13 +494,16 @@ tbody tr:last-child td {
         font-size: 14px;
     }
 
-    th, td {
+    th,
+    td {
         padding: 8px;
-        font-size: 13px; /* Reduce el tamaño en dispositivos pequeños */
+        font-size: 13px;
+        /* Reduce el tamaño en dispositivos pequeños */
     }
 
     /* Permitir que el texto se divida en varias líneas */
-    th, td {
+    th,
+    td {
         white-space: normal;
         word-wrap: break-word;
     }
@@ -432,7 +512,7 @@ tbody tr:last-child td {
 
 /* Seccion 3 */
 
-.section-3{
+.section-3 {
 
     display: flex;
     justify-content: center;
