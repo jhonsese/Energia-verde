@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,7 +22,7 @@ public class UsuariosController {
     public String listarUsuarios(Model model,
                                  @RequestParam(defaultValue = "0") int page,
                                  @RequestParam(defaultValue = "5") int size) {
-        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size);
+        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, null, null);
 
         model.addAttribute("usuarios", paginaUsuarios.getContent());
         model.addAttribute("currentPage", page);
@@ -33,13 +34,29 @@ public class UsuariosController {
     @GetMapping("/api/usuarios")
     @ResponseBody
     public ResponseEntity<?> obtenerUsuariosJSON(@RequestParam(defaultValue = "0") int page,
-                                                 @RequestParam(defaultValue = "5") int size) {
-        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size);
+                                                 @RequestParam(defaultValue = "5") int size,
+                                                 @RequestParam(required = false) String country,
+                                                 @RequestParam(required = false) String product) {
+        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, country, product);
 
         return ResponseEntity.ok().body(Map.of(
             "usuarios", paginaUsuarios.getContent(),
             "currentPage", page,
             "totalPages", paginaUsuarios.getTotalPages()
         ));
+    }
+
+    @GetMapping("/api/paises")
+    @ResponseBody
+    public ResponseEntity<?> obtenerPaises() {
+        List<String> paises = usuariosService.obtenerPaises();
+        return ResponseEntity.ok(paises);
+    }
+
+    @GetMapping("/api/productos")
+    @ResponseBody
+    public ResponseEntity<?> obtenerProductos() {
+        List<String> productos = usuariosService.obtenerProductos(); // Implementa este método en tu servicio
+        return ResponseEntity.ok(productos);
     }
 }
