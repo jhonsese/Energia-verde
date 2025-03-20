@@ -23,10 +23,7 @@ body {
     /* Mantiene la imagen fija al hacer scroll */
 }
 
-#map {
-    width: 100vw;
-    height: 100vh;
-}
+
 
 #map-container {
     width: 100vw;
@@ -302,32 +299,30 @@ main {
     cursor: pointer;
 }
 
-.sidebar {
-    width: 350px;
-    height: 90%;
-    background: #333;
-    color: white;
-    position: fixed;
-    right: -350px;
-    top: 0;
-    transition: right 0.3s ease-in-out;
-    padding: 20px;
-    margin-top: 5.3%;
-}
-.sidebar.show {
- 
-    left: 0;
-    z-index: 1001;
-}
-.close-btn {
-    background: red;
-    border: none;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 150%;
-    margin-left: 80%;
-}
+ /* Estilo del mapa */
+ #map { height: 600px; width: 75%; float: left; }
+
+ /* Barra lateral */
+ #sidebar {
+     width: 25%;
+     height: 600px;
+     float: right;
+     background: #f4f4f4;
+     padding: 10px;
+     overflow-y: auto;
+     display: none;
+     transition: all 0.5s ease-in-out;
+ }
+
+ /* Botón de cerrar */
+ .close-btn {
+     background: red;
+     color: white;
+     padding: 5px;
+     cursor: pointer;
+     text-align: center;
+ }
+
 /* Filtros  */
 .table-container {
     display: flex;
