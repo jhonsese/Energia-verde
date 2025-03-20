@@ -9,6 +9,9 @@
    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
    <script src="https://unpkg.com/leaflet-geogjson@latest/dist/leaflet-geojson.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+   <link rel="stylesheet" href="ruta/al/archivo/sweetalert2.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 
 </head>
 
@@ -399,7 +402,8 @@
    </main>
 
    <!-- Footer -->
-
+   
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
    <script>
       let currentPage = 0;
@@ -504,7 +508,12 @@
          if (!isNaN(pageNumber) && pageNumber >= 0 && pageNumber < totalPages) {
             cargarPagina(pageNumber);
          } else {
-            alert("Número de página inválido.");
+            Swal.fire({
+            title: '¡Hola!',
+            text: 'El numero de página es inválido',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+             });
             document.getElementById("page-input").value = currentPage + 1; // Restaurar valor actual si es inválido
          }
       }
