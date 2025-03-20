@@ -81,9 +81,10 @@
             <div id="map"></div>
             <!-- Barra lateral -->
             <div id="sidebar">
-               <div class="close-btn" onclick="closeSidebar()">Cerrar</div>
+               
                <h2 id="country-title">País</h2>
                <p id="country-data">Haz clic en un país para ver información.</p>
+               <div class="close-btn" onclick="closeSidebar()">Cerrar</div>
             </div>
          </div>
       </section>
@@ -96,7 +97,7 @@
             nobis aut aliquid similique fugiat maiores repudiandae vero ducimus odio veritatis voluptate ipsa fuga, ex
             eum corporis.</p>
 
-         <button class="close-btn" onclick="closeSidebar()" ,>Cerrar</button>
+         <button class="close-btn" onclick="closeSidebar()">Cerrar</button>
       </div>
       <!-- sidebar para el funcionamiento del mapa -->
       <script>
@@ -586,6 +587,8 @@
 
                      // Mostrar la barra lateral
                      document.getElementById('sidebar').style.display = 'block';
+                     var elemento = document.getElementById('map');
+                     elemento.style.marginLeft = '0px';
                   });
                }
             }).addTo(map);
@@ -594,12 +597,34 @@
       // Función para cerrar la barra lateral
       function closeSidebar() {
          document.getElementById('sidebar').style.display = 'none';
+         var elemento = document.getElementById('map');
+         elemento.style.marginLeft = '12%';
       }
    </script>
 
    <script>
       AOS.init();
    </script>
+    <script>
+      // Selecciona el elemento por su ID
+      const elemento = document.getElementById('map');
+
+      // Función que se ejecuta al hacer clic en el elemento
+      elemento.addEventListener('click', function() {
+          // Obtiene las posiciones actuales
+          let posicionIzquierda = parseInt(elemento.style.left, 10);
+
+          // Define el desplazamiento en píxeles
+          const desplazamiento = -12;
+
+          // Calcula las nuevas posiciones
+          posicionIzquierda += desplazamiento;
+          posicionSuperior += desplazamiento;
+
+          // Aplica las nuevas posiciones al elemento 
+          elemento.style.left = posicionIzquierda + '%';
+      });
+  </script>
 
 </body>
 

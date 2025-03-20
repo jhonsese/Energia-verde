@@ -27,8 +27,10 @@ body {
 
 #map-container {
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     overflow: hidden;
+    margin-bottom: 10%;
+    
 }
 
 /* svg {
@@ -65,6 +67,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
+    height: 5vh;
 }
 
 .container-nav{
@@ -289,7 +292,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 25%;
+    
 }
 
 .section-1 path {
@@ -300,7 +303,7 @@ main {
 }
 
  /* Estilo del mapa */
- #map { height: 600px; width: 75%; float: left; }
+ #map { height: 570px; width: 75%; margin-left: 12%; position: absolute; cursor: pointer; transition: margin 0.5s ease; margin-bottom: 3%;}
 
  /* Barra lateral */
  #sidebar {
@@ -311,7 +314,7 @@ main {
      padding: 10px;
      overflow-y: auto;
      display: none;
-     transition: all 0.5s ease-in-out;
+     transition: block 0.5s ease;
  }
 
  /* Botón de cerrar */
@@ -321,6 +324,7 @@ main {
      padding: 5px;
      cursor: pointer;
      text-align: center;
+     margin-top: 140%;
  }
 
 /* Filtros  */
