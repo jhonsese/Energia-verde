@@ -534,12 +534,25 @@
 
    <script>
       // Crear el mapa centrado en el mundo
-      var map = L.map('map').setView([20, 0], 2);
+       // Definir los límites del desplazamiento
+       var bounds = L.latLngBounds(
+            L.latLng(29.048509529617476, -32.85351351374195), // Suroeste
+            L.latLng(29.048509529617476, 32.85351351374195)  // Noreste
+        );
 
-      // Cargar los tiles de OpenStreetMap
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
+        // Inicializar el mapa
+        var map = L.map('map', {
+            center: [29.048509529617476, -32.85351351374195], // Ubicación inicial
+            zoom: 0,
+            minZoom: 2,
+            maxBounds: bounds, // Restringir el desplazamiento
+            maxBoundsViscosity: 1.0 // Evita salir del área
+        });
+
+        // Agregar la capa de mapa base
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors',
+        }).addTo(map);
 
       // Cargar datos GeoJSON de los países (Fuente: Natural Earth)
       var geojsonUrl = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json';
