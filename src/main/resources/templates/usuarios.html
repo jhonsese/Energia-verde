@@ -84,7 +84,7 @@
             <div id="map"></div>
             <!-- Barra lateral -->
             <div id="sidebar">
-               
+
                <h2 id="country-title">País</h2>
                <p id="country-data">Haz clic en un país para ver información.</p>
                <div class="close-btn" onclick="closeSidebar()">Cerrar</div>
@@ -347,24 +347,27 @@
          </div>
 
          </div>
-         <div class="container-contacto">
-            <h2 class="section-title">Contáctanos</h2>
-            <div class="contact-form">
-               <div class="form-group">
-                  <label for="name">Nombre</label>
-                  <input type="text" id="name" placeholder="Tu nombre">
+         <form id="contacto-form" action="/contacto" method="post">
+            <div class="container-contacto">
+               <h2 class="section-title">Contáctanos</h2>
+               <div class="contact-form">
+                  <div class="form-group">
+                     <label for="nombre">Nombre</label>
+                     <input type="text" id="nombre" placeholder="Tu nombre" name="nombre" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="email">Email</label>
+                     <input type="email" id="email" name="email" placeholder="Tu email" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="comentario">Mensaje</label>
+                     <textarea id="comentario" name="comentario" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                  </div>
+                  <button type="submit" class="btn-neon">Enviar mensaje</button>
                </div>
-               <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" placeholder="Tu email">
-               </div>
-               <div class="form-group">
-                  <label for="message">Mensaje</label>
-                  <textarea id="message" placeholder="¿En qué podemos ayudarte?"></textarea>
-               </div>
-               <a href="#" class="btn-neon">Enviar mensaje</a>
             </div>
-         </div>
+         </form>
+
       </section>
 
       <footer>
@@ -402,7 +405,7 @@
    </main>
 
    <!-- Footer -->
-   
+
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
    <script>
@@ -509,11 +512,11 @@
             cargarPagina(pageNumber);
          } else {
             Swal.fire({
-            title: '¡Hola!',
-            text: 'El numero de página es inválido',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
-             });
+               title: '¡Hola!',
+               text: 'El numero de página es inválido',
+               icon: 'success',
+               confirmButtonText: 'Aceptar'
+            });
             document.getElementById("page-input").value = currentPage + 1; // Restaurar valor actual si es inválido
          }
       }
@@ -534,25 +537,25 @@
 
    <script>
       // Crear el mapa centrado en el mundo
-       // Definir los límites del desplazamiento
-       var bounds = L.latLngBounds(
-            L.latLng(29.048509529617476, -32.85351351374195), // Suroeste
-            L.latLng(29.048509529617476, 32.85351351374195)  // Noreste
-        );
+      // Definir los límites del desplazamiento
+      var bounds = L.latLngBounds(
+         L.latLng(29.048509529617476, -32.85351351374195), // Suroeste
+         L.latLng(29.048509529617476, 32.85351351374195) // Noreste
+      );
 
-        // Inicializar el mapa
-        var map = L.map('map', {
-            center: [29.048509529617476, -32.85351351374195], // Ubicación inicial
-            zoom: 0,
-            minZoom: 2,
-            maxBounds: bounds, // Restringir el desplazamiento
-            maxBoundsViscosity: 1.0 // Evita salir del área
-        });
+      // Inicializar el mapa
+      var map = L.map('map', {
+         center: [29.048509529617476, -32.85351351374195], // Ubicación inicial
+         zoom: 0,
+         minZoom: 2,
+         maxBounds: bounds, // Restringir el desplazamiento
+         maxBoundsViscosity: 1.0 // Evita salir del área
+      });
 
-        // Agregar la capa de mapa base
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors',
-        }).addTo(map);
+      // Agregar la capa de mapa base
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         attribution: '&copy; OpenStreetMap contributors',
+      }).addTo(map);
 
       // Cargar datos GeoJSON de los países (Fuente: Natural Earth)
       var geojsonUrl = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json';
@@ -627,26 +630,28 @@
    <script>
       AOS.init();
    </script>
-    <script>
+   <script>
       // Selecciona el elemento por su ID
       const elemento = document.getElementById('map');
 
       // Función que se ejecuta al hacer clic en el elemento
-      elemento.addEventListener('click', function() {
-          // Obtiene las posiciones actuales
-          let posicionIzquierda = parseInt(elemento.style.left, 10);
+      elemento.addEventListener('click', function () {
+         // Obtiene las posiciones actuales
+         let posicionIzquierda = parseInt(elemento.style.left, 10);
 
-          // Define el desplazamiento en píxeles
-          const desplazamiento = -12;
+         // Define el desplazamiento en píxeles
+         const desplazamiento = -12;
 
-          // Calcula las nuevas posiciones
-          posicionIzquierda += desplazamiento;
-          posicionSuperior += desplazamiento;
+         // Calcula las nuevas posiciones
+         posicionIzquierda += desplazamiento;
+         posicionSuperior += desplazamiento;
 
-          // Aplica las nuevas posiciones al elemento 
-          elemento.style.left = posicionIzquierda + '%';
+         // Aplica las nuevas posiciones al elemento 
+         elemento.style.left = posicionIzquierda + '%';
       });
-  </script>
+   </script>
+  
+
 
 </body>
 

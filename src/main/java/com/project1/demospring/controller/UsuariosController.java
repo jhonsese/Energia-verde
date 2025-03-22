@@ -1,6 +1,8 @@
 package com.project1.demospring.controller;
 
+import com.project1.demospring.model.Contactanos;
 import com.project1.demospring.model.Usuarios;
+import com.project1.demospring.service.ContactanosService;
 import com.project1.demospring.service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +32,22 @@ public class UsuariosController {
 
         return "usuarios";
     }
+
+    @Autowired
+    private ContactanosService contactanosService;
+
+    @GetMapping("/contacto")
+    public String mostrarFormularioContacto(Model model) {
+        model.addAttribute("contacto", new Contactanos());
+        return "contacto"; // Nombre de la vista HTML
+    }
+
+    @PostMapping("/contacto")
+    public String guardarContacto(@ModelAttribute Contactanos contacto) {
+        contactanosService.guardarContacto(contacto);
+        return "redirect:/contacto?success"; // Redirecciona con un parámetro de éxito
+    }
+
 
     @GetMapping("/api/usuarios")
     @ResponseBody
