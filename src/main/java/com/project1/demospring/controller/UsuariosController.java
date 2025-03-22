@@ -1,6 +1,8 @@
 package com.project1.demospring.controller;
 
+import com.project1.demospring.model.Contactanos;
 import com.project1.demospring.model.Usuarios;
+import com.project1.demospring.service.ContactanosService;
 import com.project1.demospring.service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,7 +24,7 @@ public class UsuariosController {
     public String listarUsuarios(Model model,
                                  @RequestParam(defaultValue = "0") int page,
                                  @RequestParam(defaultValue = "5") int size) {
-        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, null, null);
+        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, null, null,null );
 
         model.addAttribute("usuarios", paginaUsuarios.getContent());
         model.addAttribute("currentPage", page);
@@ -31,13 +33,30 @@ public class UsuariosController {
         return "usuarios";
     }
 
+    @Autowired
+    private ContactanosService contactanosService;
+
+    @GetMapping("/contacto")
+    public String mostrarFormularioContacto(Model model) {
+        model.addAttribute("contacto", new Contactanos());
+        return "contacto"; // Nombre de la vista HTML
+    }
+
+    @PostMapping("/contacto")
+    public String guardarContacto(@ModelAttribute Contactanos contacto) {
+        contactanosService.guardarContacto(contacto);
+        return "redirect:/contacto?success"; // Redirecciona con un parámetro de éxito
+    }
+
+
     @GetMapping("/api/usuarios")
     @ResponseBody
     public ResponseEntity<?> obtenerUsuariosJSON(@RequestParam(defaultValue = "0") int page,
                                                  @RequestParam(defaultValue = "5") int size,
                                                  @RequestParam(required = false) String country,
-                                                 @RequestParam(required = false) String product) {
-        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, country, product);
+                                                 @RequestParam(required = false) String product,
+                                                 @RequestParam(required = false) String time) {
+        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, country, product, time);
 
         return ResponseEntity.ok().body(Map.of(
             "usuarios", paginaUsuarios.getContent(),
@@ -58,5 +77,12 @@ public class UsuariosController {
     public ResponseEntity<?> obtenerProductos() {
         List<String> productos = usuariosService.obtenerProductos(); // Implementa este método en tu servicio
         return ResponseEntity.ok(productos);
+    }
+
+    @GetMapping("/api/times")
+    @ResponseBody
+    public ResponseEntity<?> obtenerTimes() {
+        List<String> times = usuariosService.obtenerTimes(); // Implementa este método en tu servicio
+        return ResponseEntity.ok(times);
     }
 }

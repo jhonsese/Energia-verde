@@ -367,8 +367,8 @@ main {
 .search-filter2 {
     align-items: center;
     justify-content: center;
-    margin-left: 85px;
-    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-bottom: 12px;
 }
 
 .search-container2 {
@@ -521,16 +521,10 @@ tbody tr:last-child td {
 }
 
 .pagination-btn {
-    display: inline-block;
-    padding: 16px 32px;
-    background-color: #39ff14;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    text-align: center;
-    border-radius: 50px;
-    border: none;
+    background-color: #2e7d32;
+    color: rgb(26, 25, 25);
+    padding: 10px 15px;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(57, 255, 20, 0.4), 0 0 0 4px rgba(57, 255, 20, 0.1);
@@ -544,7 +538,7 @@ tbody tr:last-child td {
 
 .pagination-btn:hover {
     border: 1px solid #000;
-    background-color: #9fe0a3;
+    background-color: #3498db;
 }
 
 .pagination-input {

@@ -11,12 +11,24 @@ import java.util.List;
 
 @Repository
 public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
+
     @Query("SELECT DISTINCT u.country FROM Usuarios u")
     List<String> findDistinctCountries();
 
     @Query("SELECT DISTINCT u.product FROM Usuarios u")
     List<String> findDistinctProducts();
 
-    @Query("SELECT u FROM Usuarios u WHERE (:country IS NULL OR u.country = :country) AND (:product IS NULL OR u.product = :product)")
-    Page<Usuarios> findByCountryAndProduct(@Param("country") String country, @Param("product") String product, Pageable pageable);
+    @Query("SELECT DISTINCT u.time FROM Usuarios u")
+    List<String> findDistinctTimes();
+
+    @Query("SELECT u FROM Usuarios u " +
+           "WHERE (:country IS NULL OR u.country = :country) " +
+           "AND (:product IS NULL OR u.product = :product) " +
+           "AND (:time IS NULL OR u.time = :time)")
+    Page<Usuarios> findByCountryAndProductAndTime(
+        @Param("country") String country, 
+        @Param("product") String product, 
+        @Param("time") String time, 
+        Pageable pageable
+    );
 }
