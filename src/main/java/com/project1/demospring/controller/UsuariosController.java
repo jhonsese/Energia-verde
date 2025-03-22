@@ -24,7 +24,7 @@ public class UsuariosController {
     public String listarUsuarios(Model model,
                                  @RequestParam(defaultValue = "0") int page,
                                  @RequestParam(defaultValue = "5") int size) {
-        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, null, null);
+        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, null, null,null );
 
         model.addAttribute("usuarios", paginaUsuarios.getContent());
         model.addAttribute("currentPage", page);
@@ -54,8 +54,9 @@ public class UsuariosController {
     public ResponseEntity<?> obtenerUsuariosJSON(@RequestParam(defaultValue = "0") int page,
                                                  @RequestParam(defaultValue = "5") int size,
                                                  @RequestParam(required = false) String country,
-                                                 @RequestParam(required = false) String product) {
-        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, country, product);
+                                                 @RequestParam(required = false) String product,
+                                                 @RequestParam(required = false) String time) {
+        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, country, product, time);
 
         return ResponseEntity.ok().body(Map.of(
             "usuarios", paginaUsuarios.getContent(),
@@ -76,5 +77,12 @@ public class UsuariosController {
     public ResponseEntity<?> obtenerProductos() {
         List<String> productos = usuariosService.obtenerProductos(); // Implementa este método en tu servicio
         return ResponseEntity.ok(productos);
+    }
+
+    @GetMapping("/api/times")
+    @ResponseBody
+    public ResponseEntity<?> obtenerTimes() {
+        List<String> times = usuariosService.obtenerTimes(); // Implementa este método en tu servicio
+        return ResponseEntity.ok(times);
     }
 }

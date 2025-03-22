@@ -24,8 +24,12 @@ public class UsuariosService {
         return usuariosRepository.findDistinctProducts();
     }
 
-    public Page<Usuarios> obtenerUsuariosPaginados(int page, int size, String country, String product) {
+    public List<String> obtenerTimes() {
+        return usuariosRepository.findDistinctTimes();
+    }
+
+    public Page<Usuarios> obtenerUsuariosPaginados(int page, int size, String country, String product, String time) {
         Pageable pageable = PageRequest.of(page, size);
-        return usuariosRepository.findByCountryAndProduct(country, product, pageable);
+        return usuariosRepository.findByCountryAndProductAndTime(country, product, time, pageable);
     }
 }

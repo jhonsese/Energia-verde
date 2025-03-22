@@ -140,10 +140,15 @@
                      <select id="country-filter">
                         <option value="">Seleccione un país</option>
                      </select>
+                     
+                     <select id="time-filter">
+                        <option value="">Seleccione una fecha</option>
+                     </select>
 
                      <select id="product-filter">
                         <option value="">Seleccione un producto</option>
                      </select>
+
                   </div>
                   <div class="table-wrapper">
                      <table>
@@ -154,6 +159,7 @@
                               <th>Fecha</th>
                               <th>Balance</th>
                               <th>Producto</th>
+                              <th>Continente</th>
                               <th>Valor</th>
                               <th>Unidad</th>
                            </tr>
@@ -410,122 +416,133 @@
 
    <script>
       let currentPage = 0;
-      let totalPages = 1;
+let totalPages = 1;
 
-      document.addEventListener("DOMContentLoaded", function () {
-         cargarPaises();
-         cargarProductos();
-         cargarPagina(0);
+document.addEventListener("DOMContentLoaded", function () {
+   cargarPaises();
+   cargarProductos();
+   cargarFechas();
+   cargarPagina(0);
 
-         // Event listeners para los filtros
-         document.getElementById("country-filter").addEventListener("change", () => cargarPagina(0));
-         document.getElementById("product-filter").addEventListener("change", () => cargarPagina(0));
-      });
+   // Event listeners para los filtros
+   document.getElementById("country-filter").addEventListener("change", () => cargarPagina(0));
+   document.getElementById("product-filter").addEventListener("change", () => cargarPagina(0));
+   document.getElementById("time-filter").addEventListener("change", () => cargarPagina(0));
+});
 
-      function cargarPagina(page) {
-         if (page < 0 || page >= totalPages) return;
+function cargarPagina(page) {
+   if (page < 0 || page >= totalPages) return;
 
-         // Obtener los valores seleccionados en los filtros
-         let country = document.getElementById("country-filter").value;
-         let product = document.getElementById("product-filter").value;
+   // Obtener valores de los filtros
+   let country = document.getElementById("country-filter").value;
+   let product = document.getElementById("product-filter").value;
+   let time = document.getElementById("time-filter").value;
 
-         let url = `/api/usuarios?page=${page}&size=5`;
-         if (country) url += `&country=${encodeURIComponent(country)}`;
-         if (product) url += `&product=${encodeURIComponent(product)}`;
+   let url = `/api/usuarios?page=${page}&size=5`;
+   if (country) url += `&country=${encodeURIComponent(country)}`;
+   if (product) url += `&product=${encodeURIComponent(product)}`;
+   if (time) url += `&time=${encodeURIComponent(time)}`;
 
-         fetch(url)
-            .then(response => response.json())
-            .then(data => {
-               const tbody = document.getElementById("tabla-usuarios");
-               tbody.innerHTML = ""; // Limpiar contenido anterior
+   fetch(url)
+      .then(response => response.json())
+      .then(data => {
+         const tbody = document.getElementById("tabla-usuarios");
+         tbody.innerHTML = ""; // Limpiar contenido anterior
 
-               data.usuarios.forEach(usuario => {
-                  const row = document.createElement("tr");
-                  row.innerHTML = `
-                    <td>${usuario.id}</td>
-                    <td>${usuario.country}</td>
-                    <td>${usuario.time}</td>
-                    <td>${usuario.balance}</td>
-                    <td>${usuario.product}</td>
-                    <td>${usuario.value}</td>
-                    <td>${usuario.unit}</td>
-                `;
-                  tbody.appendChild(row);
-               });
+         data.usuarios.forEach(usuario => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${usuario.id}</td>
+              <td>${usuario.country}</td>
+              <td>${usuario.time}</td>
+              <td>${usuario.balance}</td>
+              <td>${usuario.product}</td>
+              <td>${usuario.continente}</td>
+              <td>${usuario.value}</td>
+              <td>${usuario.unit}</td>  
+          `;
+            tbody.appendChild(row);
+         });
 
-               // Actualizar paginación
-               currentPage = data.currentPage;
-               totalPages = data.totalPages;
+         // Actualizar paginación
+         currentPage = data.currentPage;
+         totalPages = data.totalPages;
 
-               document.getElementById("page-input").value = currentPage + 1; // Mostrar número de página actual
-               document.getElementById("total-pages").textContent = totalPages;
+         document.getElementById("page-input").value = currentPage + 1;
+         document.getElementById("total-pages").textContent = totalPages;
 
-               document.getElementById("prev-btn").disabled = currentPage === 0;
-               document.getElementById("next-btn").disabled = currentPage + 1 >= totalPages;
-            })
-            .catch(error => console.error("Error cargando la página:", error));
-      }
+         document.getElementById("prev-btn").disabled = currentPage === 0;
+         document.getElementById("next-btn").disabled = currentPage + 1 >= totalPages;
+      })
+      .catch(error => console.error("Error cargando la página:", error));
+}
 
-      function cargarPaises() {
-         fetch("/api/paises")
-            .then(response => response.json())
-            .then(paises => {
-               const select = document.getElementById("country-filter");
-               select.innerHTML = `<option value="">Seleccione un país</option>`;
-               paises.forEach(pais => {
-                  const option = document.createElement("option");
-                  option.value = pais;
-                  option.textContent = pais;
-                  select.appendChild(option);
-               });
-            })
-            .catch(error => console.error("Error cargando los países:", error));
-      }
+function cargarPaises() {
+   fetch("/api/paises")
+      .then(response => response.json())
+      .then(paises => {
+         const select = document.getElementById("country-filter");
+         select.innerHTML = `<option value="">Seleccione un país</option>`;
+         paises.forEach(pais => {
+            const option = document.createElement("option");
+            option.value = pais;
+            option.textContent = pais;
+            select.appendChild(option);
+         });
+      })
+      .catch(error => console.error("Error cargando los países:", error));
+}
 
-      function cargarProductos() {
-         fetch("/api/productos")
-            .then(response => response.json())
-            .then(productos => {
-               const select = document.getElementById("product-filter");
-               select.innerHTML = `<option value="">Seleccione un producto</option>`;
-               productos.forEach(producto => {
-                  const option = document.createElement("option");
-                  option.value = producto;
-                  option.textContent = producto;
-                  select.appendChild(option);
-               });
-            })
-            .catch(error => console.error("Error cargando los productos:", error));
-      }
+function cargarProductos() {
+   fetch("/api/productos")
+      .then(response => response.json())
+      .then(productos => {
+         const select = document.getElementById("product-filter");
+         select.innerHTML = `<option value="">Seleccione un producto</option>`;
+         productos.forEach(producto => {
+            const option = document.createElement("option");
+            option.value = producto;
+            option.textContent = producto;
+            select.appendChild(option);
+         });
+      })
+      .catch(error => console.error("Error cargando los productos:", error));
+}
 
-      document.getElementById("page-input").addEventListener("keypress", function (event) {
-         if (event.key === "Enter") {
-            irAPagina();
-         }
-      });
+function cargarFechas() {
+   fetch("/api/times")
+      .then(response => response.json())
+      .then(fechas => {
+         const select = document.getElementById("time-filter");
+         select.innerHTML = `<option value="">Seleccione una fecha</option>`;
+         fechas.forEach(fecha => {
+            const option = document.createElement("option");
+            option.value = fecha;
+            option.textContent = fecha;
+            select.appendChild(option);
+         });
+      })
+      .catch(error => console.error("Error cargando las fechas:", error));
+}
 
-      function irAPagina() {
-         let pageInput = document.getElementById("page-input").value;
-         let pageNumber = parseInt(pageInput, 10) - 1;
+document.getElementById("page-input").addEventListener("keypress", function (event) {
+   if (event.key === "Enter") {
+      irAPagina();
+   }
+});
+
+function irAPagina() {
+   let pageInput = document.getElementById("page-input").value;
+   let pageNumber = parseInt(pageInput, 10) - 1;
 
          if (!isNaN(pageNumber) && pageNumber >= 0 && pageNumber < totalPages) {
             cargarPagina(pageNumber);
          } else {
-            Swal.fire({
-               title: '¡Hola!',
-               text: 'El numero de página es inválido',
-               icon: 'success',
-               confirmButtonText: 'Aceptar'
-            });
+            alert("Número de página inválido.");
             document.getElementById("page-input").value = currentPage + 1; // Restaurar valor actual si es inválido
          }
       }
 
-      document.getElementById("page-input").addEventListener("keypress", function (event) {
-         if (event.key === "Enter") {
-            irAPagina();
-         }
-      });
    </script>
    <script th:href="@{/assets/app.js}"></script>
    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

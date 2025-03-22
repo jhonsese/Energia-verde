@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "energia")
 public class Usuarios {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Para auto-generar el ID en MySQL
-    @Column(name = "id")  // Asegúrate de que coincida con el nombre en la BD
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Genera el ID automáticamente en MySQL
+    @Column(name = "id")
     private Long id;
-    @Column(name = "country") // Si en la BD es otro nombre, cámbialo aquí
+
+    @Column(name = "country")
     private String country;
 
     @Column(name = "time")
@@ -26,6 +28,24 @@ public class Usuarios {
 
     @Column(name = "unit")
     private String unit;
+
+    @Column(name = "id_cont") // Asegúrate de que el nombre coincida en la BD
+    private String continente;
+
+    // Constructor vacío (obligatorio para JPA)
+    public Usuarios() {}
+
+    // Constructor con parámetros
+    public Usuarios(Long id, String country, String time, String balance, String product, String value, String unit, String continente) {
+        this.id = id;
+        this.country = country;
+        this.time = time;
+        this.balance = balance;
+        this.product = product;
+        this.value = value;
+        this.unit = unit;
+        this.continente = continente;
+    }
 
     // Getters y Setters
     public Long getId() {
@@ -82,5 +102,13 @@ public class Usuarios {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getContinente() {
+        return continente;
+    }
+
+    public void setContinente(String continente) {
+        this.continente = continente;
     }
 }
