@@ -59,4 +59,18 @@ public class UsuariosController {
         List<String> productos = usuariosService.obtenerProductos(); // Implementa este método en tu servicio
         return ResponseEntity.ok(productos);
     }
+
+    @GetMapping("/api/comparacion")
+    @ResponseBody
+    public ResponseEntity<?> obtenerValoresUsuarios(@RequestParam String country,
+                                                    @RequestParam String time) {
+        Map<String, Double> valores = usuariosService.obtenerValoresUsuarios(country, time);
+        return ResponseEntity.ok(valores);
+    }
+
+    @GetMapping("api/comparacion-anual")
+    public ResponseEntity<List<Map<String, Object>>> obtenerComparacionAnual(@RequestParam String country) {
+        List<Map<String, Object>> resultado = usuariosService.obtenerResumenAnualPorPais(country);
+        return ResponseEntity.ok(resultado);
+    }
 }

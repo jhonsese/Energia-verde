@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" th:href="@{/css/styleSesion.css}">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+
+
+</head>
+
+<body>
+
+<header>
+  <div class="container-nav">
+    <nav>
+      <a href="#" class="logo">
+        <div class="logo-icon"></div>
+        Energía Verde
+      </a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#soluciones">Soluciones</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="login-container">
+  <div class="icon-container">
+    <box-icon name='x'></box-icon>
+  </div>
+  <h2 class="title">Accede a contenido especial en nuestro Newsletter</h2>
+
+  <form th:action="@{/sesion}" method="post" th:object="${sesion}">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" placeholder="Ingresa tu Nombre completo" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo electrónico</label>
+      <input type="email" class="form-control" id="correo" name="correo" th:field="*{correo}" placeholder="Ingresa tu correo electrónico" required>
+    </div>
+
+    <button type="submit" class="btn-login">Enviar</button>
+
+    <p class="abajo">Mediante la inscripción a nuestro Newsletter tendrás acceso a las más recientes actualizaciones de nuestro sistema, y podrás conocer las nuevas tendencias en el mundo de la energía renovable.</p>
+  </form>
+</div>
+
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Energía Verde</h3>
+        <p>Comprometidos con un futuro sostenible a través de soluciones energéticas renovables e innovadoras.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Enlaces rápidos</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#soluciones">Soluciones</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contacto</h3>
+        <ul>
+          <li>info@energiaverde.com</li>
+          <li>+34 912 345 678</li>
+          <li>Calle Sostenible 123, Madrid</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <img src="data:image/png;base64," alt="">
+      <p>&copy; 2023 Energía Verde. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init();
+</script>
+
+</body>
+
+
+</html>

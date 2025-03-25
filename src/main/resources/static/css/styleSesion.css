@@ -1,0 +1,78 @@
+.login-container {
+    width: 350px;
+    height: 500px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    position: relative; /* Para que respete el flujo de la página */
+    margin: 70px auto 50px auto; /* Margen superior para separarlo del header */
+    margin-bottom: 40px; /* Espacio extra entre el header y el login */
+}
+.title{
+    margin-bottom:15px;
+    text-align: center;
+}
+p {
+    margin-top: 10px;
+    margin-bottom: 30px; /* Espacio después del párrafo */
+}
+
+h1 {
+    margin-top: 40px; /* Espacio antes del título */
+}
+
+.abajo{
+    color: #4c4c4c;
+    font-size: 14px; /* Tamaño de fuente */
+    text-align: center;
+
+}
+
+h3{
+    height:10px;
+    margin-top: 5px;
+    margin-botom: 5px;
+
+}
+
+/* Botón de Login */
+.btn-login {
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-bottom: 30px;
+    margin-top:15px;
+}
+
+.btn-login:hover {
+    background-color: #388E3C;
+
+}
+
+/* Campos de entrada */
+input {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* ESTA ES LA X DE SALIR*/
+.icon-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+}
+
+.icon-container box-icon {
+    margin-left: auto; /* Espaciado entre ícono y texto */
+
+}
