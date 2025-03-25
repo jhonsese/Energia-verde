@@ -854,10 +854,9 @@ main {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
     position: relative;
-    width: 80%;
-    max-width: 80%; 
+    width: 100%;
+    max-width: 100%; 
     overflow: hidden; 
     margin: 0 auto;
 }
@@ -921,8 +920,7 @@ main {
 
 /* Tabla de la seccion 3 */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
     background-color: white;
     border-radius: 10px;
     padding: 50px;
