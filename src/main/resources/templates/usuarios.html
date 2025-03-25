@@ -11,7 +11,8 @@
    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
    <link rel="stylesheet" href="ruta/al/archivo/sweetalert2.min.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-
+   <!-- Font Awesome para iconos -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -36,7 +37,7 @@
 
    <main>
 
-      <section class="hero">
+      <section class="hero" id="inicio">
          <div class="container-home">
             <h1>Energía Verde</h1>
             <p>Transformamos el mundo con soluciones energéticas renovables que protegen nuestro planeta y garantizan un
@@ -76,57 +77,157 @@
          </div>
       </section>
 
-      <section class="section-1" id="home">
+      <section class="section-1" id="soluciones">
+         <div class="eco-bg-elements">
+            <div class="eco-element leaf-1"><i class="fas fa-leaf"></i></div>
+            <div class="eco-element leaf-2"><i class="fas fa-seedling"></i></div>
+            <div class="eco-element sun"><i class="fas fa-sun"></i></div>
+            <div class="eco-element wind"><i class="fas fa-wind"></i></div>
+         </div>
 
-         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-         <!-- Created for MapSVG plugin: http://mapsvg.com -->
-         <div id="map-container">
-            <div id="map"></div>
-            <!-- Barra lateral -->
-            <div id="sidebar">
+         <div class="container">
+            <div class="eco-header">
+               <h2>Soluciones Globales Sostenibles</h2>
+               <p>Explora nuestro mapa interactivo para descubrir el impacto de las energías renovables y soluciones
+                  sostenibles en cada país del mundo</p>
+            </div>
 
-               <h2 id="country-title">País</h2>
-               <p id="country-data">Haz clic en un país para ver información.</p>
-               <div class="close-btn" onclick="closeSidebar()">Cerrar</div>
+            <div class="map-wrapper">
+               <div id="map-container">
+                  <div class="map-title-overlay">
+                     <i class="fas fa-globe-americas"></i>
+                     <h3>Mapa Mundial de Energía Verde</h3>
+                  </div>
+
+                  <div id="map"></div>
+
+                  <!-- Controles personalizados -->
+                  <div class="map-controls">
+                     <button class="map-control-btn" id="zoom-in"><i class="fas fa-plus"></i></button>
+                     <button class="map-control-btn" id="zoom-out"><i class="fas fa-minus"></i></button>
+                     <button class="map-control-btn" id="reset-view"><i class="fas fa-home"></i></button>
+                  </div>
+
+                  <!-- Barra lateral -->
+                  <div id="sidebar">
+                     <div class="sidebar-header">
+                        <h2><i class="fas fa-map-marker-alt"></i> <span id="country-title">País</span></h2>
+                        <button class="close-btn" onclick="closeSidebar()"><i class="fas fa-times"></i></button>
+                     </div>
+                     <div class="sidebar-content">
+                        <div class="country-flag" id="country-flag">
+                           <div class="flag-placeholder"></div>
+                        </div>
+
+                        <p id="country-data">Haz clic en un país para ver información detallada sobre sus iniciativas de
+                           energía renovable y sostenibilidad.</p>
+
+                        <div class="eco-stats-title">
+                           <i class="fas fa-chart-line"></i> Estadísticas clave
+                        </div>
+
+                        <div class="country-stats">
+                           <div class="stat-item">
+                              <div class="stat-icon">
+                                 <i class="fas fa-users"></i>
+                              </div>
+                              <div class="stat-info">
+                                 <span class="stat-label">Población</span>
+                                 <span class="stat-value" id="population">-</span>
+                              </div>
+                           </div>
+                           <div class="stat-item">
+                              <div class="stat-icon">
+                                 <i class="fas fa-city"></i>
+                              </div>
+                              <div class="stat-info">
+                                 <span class="stat-label">Capital</span>
+                                 <span class="stat-value" id="capital">-</span>
+                              </div>
+                           </div>
+                           <div class="stat-item">
+                              <div class="stat-icon">
+                                 <i class="fas fa-language"></i>
+                              </div>
+                              <div class="stat-info">
+                                 <span class="stat-label">Idioma</span>
+                                 <span class="stat-value" id="language">-</span>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="eco-stats-title">
+                           <i class="fas fa-leaf"></i> Indicadores de sostenibilidad
+                        </div>
+
+                        <div class="eco-indicators">
+                           <div class="eco-indicator">
+                              <div class="eco-indicator-label">
+                                 <span>Energía renovable</span>
+                                 <span>65%</span>
+                              </div>
+                              <div class="progress-bar">
+                                 <div class="progress-fill" style="width: 65%"></div>
+                              </div>
+                           </div>
+                           <div class="eco-indicator">
+                              <div class="eco-indicator-label">
+                                 <span>Reducción de emisiones</span>
+                                 <span>42%</span>
+                              </div>
+                              <div class="progress-bar">
+                                 <div class="progress-fill" style="width: 42%"></div>
+                              </div>
+                           </div>
+                           <div class="eco-indicator">
+                              <div class="eco-indicator-label">
+                                 <span>Reciclaje</span>
+                                 <span>78%</span>
+                              </div>
+                              <div class="progress-bar">
+                                 <div class="progress-fill" style="width: 78%"></div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <button class="more-info-btn">
+                           <i class="fas fa-info-circle"></i> Ver perfil completo
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="eco-info-boxes">
+               <div class="eco-info-box">
+                  <div class="eco-info-icon">
+                     <i class="fas fa-solar-panel"></i>
+                  </div>
+                  <h3>Energía Solar</h3>
+                  <p>Descubre cómo los países están aprovechando la energía solar para reducir su huella de carbono y
+                     crear un futuro más sostenible.</p>
+               </div>
+               <div class="eco-info-box">
+                  <div class="eco-info-icon">
+                     <i class="fas fa-wind"></i>
+                  </div>
+                  <h3>Energía Eólica</h3>
+                  <p>Explora las iniciativas de energía eólica en todo el mundo y su impacto en la reducción de
+                     emisiones de gases de efecto invernadero.</p>
+               </div>
+               <div class="eco-info-box">
+                  <div class="eco-info-icon">
+                     <i class="fas fa-recycle"></i>
+                  </div>
+                  <h3>Economía Circular</h3>
+                  <p>Conoce las estrategias de economía circular que están implementando diferentes países para
+                     minimizar residuos y maximizar recursos.</p>
+               </div>
             </div>
          </div>
       </section>
 
-      <!-- Barra lateral -->
-      <div class="sidebar" id="sidebar">
-
-         <h2 id="country-name">País</h2>
-         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit laboriosam, possimus exercitationem dicta
-            nobis aut aliquid similique fugiat maiores repudiandae vero ducimus odio veritatis voluptate ipsa fuga, ex
-            eum corporis.</p>
-
-         <button class="close-btn" onclick="closeSidebar()">Cerrar</button>
-      </div>
-      <!-- sidebar para el funcionamiento del mapa -->
-      <script>
-         document.querySelectorAll('svg path').forEach(path => {
-            path.addEventListener('click', function (event) {
-               const countryName = this.getAttribute('title');
-               document.getElementById('country-name').textContent = countryName;
-               document.getElementById('sidebar').classList.add('show');
-               event.stopPropagation(); // Evita que el clic en el mapa cierre la barra
-            });
-         });
-
-         function closeSidebar() {
-            document.getElementById('sidebar').classList.remove('show');
-         }
-
-         // Cerrar la barra lateral si se hace clic fuera de ella
-         document.addEventListener('click', function (event) {
-            const sidebar = document.getElementById('sidebar');
-            if (!sidebar.contains(event.target) && sidebar.classList.contains('show')) {
-               closeSidebar();
-            }
-         });
-      </script>
-
-      <section class="section-2" id="section-2">
+      <section class="section-2" id="nosotros">
 
          <div class="table-container">
             <div class="container">
@@ -140,7 +241,7 @@
                      <select id="country-filter">
                         <option value="">Seleccione un país</option>
                      </select>
-                     
+
                      <select id="time-filter">
                         <option value="">Seleccione una fecha</option>
                      </select>
@@ -195,7 +296,7 @@
 
       </section>
 
-      <section class="team" id="equipo">
+      <section class="team" id="contacto">
          <div class="container">
             <h2 class="section-title h2">Nuestro Equipo</h2>
 
@@ -367,7 +468,8 @@
                   </div>
                   <div class="form-group">
                      <label for="comentario">Mensaje</label>
-                     <textarea id="comentario" name="comentario" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                     <textarea id="comentario" name="comentario" placeholder="¿En qué podemos ayudarte?"
+                        required></textarea>
                   </div>
                   <button type="submit" class="btn-neon">Enviar mensaje</button>
                </div>
@@ -416,42 +518,42 @@
 
    <script>
       let currentPage = 0;
-let totalPages = 1;
+      let totalPages = 1;
 
-document.addEventListener("DOMContentLoaded", function () {
-   cargarPaises();
-   cargarProductos();
-   cargarFechas();
-   cargarPagina(0);
+      document.addEventListener("DOMContentLoaded", function () {
+         cargarPaises();
+         cargarProductos();
+         cargarFechas();
+         cargarPagina(0);
 
-   // Event listeners para los filtros
-   document.getElementById("country-filter").addEventListener("change", () => cargarPagina(0));
-   document.getElementById("product-filter").addEventListener("change", () => cargarPagina(0));
-   document.getElementById("time-filter").addEventListener("change", () => cargarPagina(0));
-});
+         // Event listeners para los filtros
+         document.getElementById("country-filter").addEventListener("change", () => cargarPagina(0));
+         document.getElementById("product-filter").addEventListener("change", () => cargarPagina(0));
+         document.getElementById("time-filter").addEventListener("change", () => cargarPagina(0));
+      });
 
-function cargarPagina(page) {
-   if (page < 0 || page >= totalPages) return;
+      function cargarPagina(page) {
+         if (page < 0 || page >= totalPages) return;
 
-   // Obtener valores de los filtros
-   let country = document.getElementById("country-filter").value;
-   let product = document.getElementById("product-filter").value;
-   let time = document.getElementById("time-filter").value;
+         // Obtener valores de los filtros
+         let country = document.getElementById("country-filter").value;
+         let product = document.getElementById("product-filter").value;
+         let time = document.getElementById("time-filter").value;
 
-   let url = `/api/usuarios?page=${page}&size=5`;
-   if (country) url += `&country=${encodeURIComponent(country)}`;
-   if (product) url += `&product=${encodeURIComponent(product)}`;
-   if (time) url += `&time=${encodeURIComponent(time)}`;
+         let url = `/api/usuarios?page=${page}&size=5`;
+         if (country) url += `&country=${encodeURIComponent(country)}`;
+         if (product) url += `&product=${encodeURIComponent(product)}`;
+         if (time) url += `&time=${encodeURIComponent(time)}`;
 
-   fetch(url)
-      .then(response => response.json())
-      .then(data => {
-         const tbody = document.getElementById("tabla-usuarios");
-         tbody.innerHTML = ""; // Limpiar contenido anterior
+         fetch(url)
+            .then(response => response.json())
+            .then(data => {
+               const tbody = document.getElementById("tabla-usuarios");
+               tbody.innerHTML = ""; // Limpiar contenido anterior
 
-         data.usuarios.forEach(usuario => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
+               data.usuarios.forEach(usuario => {
+                  const row = document.createElement("tr");
+                  row.innerHTML = `
               <td>${usuario.id}</td>
               <td>${usuario.country}</td>
               <td>${usuario.time}</td>
@@ -461,79 +563,79 @@ function cargarPagina(page) {
               <td>${usuario.value}</td>
               <td>${usuario.unit}</td>  
           `;
-            tbody.appendChild(row);
-         });
+                  tbody.appendChild(row);
+               });
 
-         // Actualizar paginación
-         currentPage = data.currentPage;
-         totalPages = data.totalPages;
+               // Actualizar paginación
+               currentPage = data.currentPage;
+               totalPages = data.totalPages;
 
-         document.getElementById("page-input").value = currentPage + 1;
-         document.getElementById("total-pages").textContent = totalPages;
+               document.getElementById("page-input").value = currentPage + 1;
+               document.getElementById("total-pages").textContent = totalPages;
 
-         document.getElementById("prev-btn").disabled = currentPage === 0;
-         document.getElementById("next-btn").disabled = currentPage + 1 >= totalPages;
-      })
-      .catch(error => console.error("Error cargando la página:", error));
-}
+               document.getElementById("prev-btn").disabled = currentPage === 0;
+               document.getElementById("next-btn").disabled = currentPage + 1 >= totalPages;
+            })
+            .catch(error => console.error("Error cargando la página:", error));
+      }
 
-function cargarPaises() {
-   fetch("/api/paises")
-      .then(response => response.json())
-      .then(paises => {
-         const select = document.getElementById("country-filter");
-         select.innerHTML = `<option value="">Seleccione un país</option>`;
-         paises.forEach(pais => {
-            const option = document.createElement("option");
-            option.value = pais;
-            option.textContent = pais;
-            select.appendChild(option);
-         });
-      })
-      .catch(error => console.error("Error cargando los países:", error));
-}
+      function cargarPaises() {
+         fetch("/api/paises")
+            .then(response => response.json())
+            .then(paises => {
+               const select = document.getElementById("country-filter");
+               select.innerHTML = `<option value="">Seleccione un país</option>`;
+               paises.forEach(pais => {
+                  const option = document.createElement("option");
+                  option.value = pais;
+                  option.textContent = pais;
+                  select.appendChild(option);
+               });
+            })
+            .catch(error => console.error("Error cargando los países:", error));
+      }
 
-function cargarProductos() {
-   fetch("/api/productos")
-      .then(response => response.json())
-      .then(productos => {
-         const select = document.getElementById("product-filter");
-         select.innerHTML = `<option value="">Seleccione un producto</option>`;
-         productos.forEach(producto => {
-            const option = document.createElement("option");
-            option.value = producto;
-            option.textContent = producto;
-            select.appendChild(option);
-         });
-      })
-      .catch(error => console.error("Error cargando los productos:", error));
-}
+      function cargarProductos() {
+         fetch("/api/productos")
+            .then(response => response.json())
+            .then(productos => {
+               const select = document.getElementById("product-filter");
+               select.innerHTML = `<option value="">Seleccione un producto</option>`;
+               productos.forEach(producto => {
+                  const option = document.createElement("option");
+                  option.value = producto;
+                  option.textContent = producto;
+                  select.appendChild(option);
+               });
+            })
+            .catch(error => console.error("Error cargando los productos:", error));
+      }
 
-function cargarFechas() {
-   fetch("/api/times")
-      .then(response => response.json())
-      .then(fechas => {
-         const select = document.getElementById("time-filter");
-         select.innerHTML = `<option value="">Seleccione una fecha</option>`;
-         fechas.forEach(fecha => {
-            const option = document.createElement("option");
-            option.value = fecha;
-            option.textContent = fecha;
-            select.appendChild(option);
-         });
-      })
-      .catch(error => console.error("Error cargando las fechas:", error));
-}
+      function cargarFechas() {
+         fetch("/api/times")
+            .then(response => response.json())
+            .then(fechas => {
+               const select = document.getElementById("time-filter");
+               select.innerHTML = `<option value="">Seleccione una fecha</option>`;
+               fechas.forEach(fecha => {
+                  const option = document.createElement("option");
+                  option.value = fecha;
+                  option.textContent = fecha;
+                  select.appendChild(option);
+               });
+            })
+            .catch(error => console.error("Error cargando las fechas:", error));
+      }
 
-document.getElementById("page-input").addEventListener("keypress", function (event) {
-   if (event.key === "Enter") {
-      irAPagina();
-   }
-});
+      document.getElementById("page-input").addEventListener("keypress", function (event) {
+         if (event.key === "Enter") {
+            irAPagina();
+         }
+      });
 
-function irAPagina() {
-   let pageInput = document.getElementById("page-input").value;
-   let pageNumber = parseInt(pageInput, 10) - 1;
+      function irAPagina() {
+         let pageInput = document.getElementById("page-input").value;
+         let pageNumber = parseInt(pageInput, 10) - 1;
 
          if (!isNaN(pageNumber) && pageNumber >= 0 && pageNumber < totalPages) {
             cargarPagina(pageNumber);
@@ -542,7 +644,6 @@ function irAPagina() {
             document.getElementById("page-input").value = currentPage + 1; // Restaurar valor actual si es inválido
          }
       }
-
    </script>
    <script th:href="@{/assets/app.js}"></script>
    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -550,124 +651,189 @@ function irAPagina() {
    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.pan-zoom.js/2.3.0/svg.pan-zoom.min.js"
       integrity="sha512-pG+ccNm9zn+0HrPhdA9F/fPcAVCjfBAtOyzWNJOvE954xpvcm7/ttHecDhqHNr5kuyaEMdpvQVVmrTVE3Hxcpw=="
       crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script>
+         // Datos de países (asegúrate de que coincidan exactamente con los nombres del GeoJSON)
+         var countryData = {
+            "Argentina": {
+               flag: "https://flagcdn.com/w320/ar.png",
+               description: "Argentina está invirtiendo en energía eólica y solar...",
+               population: "45 millones",
+               capital: "Buenos Aires",
+               language: "Español"
+            },
+            "Bolivia": {
+               flag: "https://flagcdn.com/w320/bo.png",
+               description: "Bolivia aprovecha la energía hidroeléctrica...",
+               population: "12 millones",
+               capital: "Sucre",
+               language: "Español"
+            },
+            "Brazil": {
+               flag: "https://flagcdn.com/w320/br.png",
+               description: "Brasil es líder en energía hidroeléctrica y etanol...",
+               population: "214 millones",
+               capital: "Brasilia",
+               language: "Portugués"
+            },
+            "Chile": {
+               flag: "https://flagcdn.com/w320/cl.png",
+               description: "Chile ha avanzado en energía solar y eólica...",
+               population: "19 millones",
+               capital: "Santiago",
+               language: "Español"
+            },
+            "Colombia": {
+               flag: "https://flagcdn.com/w320/co.png",
+               description: "Colombia apuesta por energías renovables...",
+               population: "51 millones",
+               capital: "Bogotá",
+               language: "Español"
+            },
+            "Ecuador": {
+               flag: "https://flagcdn.com/w320/ec.png",
+               description: "Ecuador aprovecha energía hidroeléctrica...",
+               population: "18 millones",
+               capital: "Quito",
+               language: "Español"
+            },
+            "Mexico": {
+               flag: "https://flagcdn.com/w320/mx.png",
+               description: "México invierte en energía eólica y solar...",
+               population: "128 millones",
+               capital: "Ciudad de México",
+               language: "Español"
+            },
+            "Paraguay": {
+               flag: "https://flagcdn.com/w320/py.png",
+               description: "Paraguay usa casi 100% de energía hidroeléctrica...",
+               population: "7 millones",
+               capital: "Asunción",
+               language: "Español"
+            },
+            "Peru": {
+               flag: "https://flagcdn.com/w320/pe.png",
+               description: "Perú está aumentando su capacidad solar...",
+               population: "33 millones",
+               capital: "Lima",
+               language: "Español"
+            },
+            "Uruguay": {
+               flag: "https://flagcdn.com/w320/uy.png",
+               description: "Uruguay es líder en energía renovable...",
+               population: "3.5 millones",
+               capital: "Montevideo",
+               language: "Español"
+            },
+            "Venezuela": {
+               flag: "https://flagcdn.com/w320/ve.png",
+               description: "Venezuela tiene alto potencial hidroeléctrico...",
+               population: "28 millones",
+               capital: "Caracas",
+               language: "Español"
+            },
+            "Spain": {
+               flag: "https://flagcdn.com/w320/es.png",
+               description: "España es un líder europeo en energías renovables...",
+               population: "47 millones",
+               capital: "Madrid",
+               language: "Español"
+            },
+            "France": {
+               flag: "https://flagcdn.com/w320/fr.png",
+               description: "Francia apuesta por la energía nuclear y renovable...",
+               population: "67 millones",
+               capital: "París",
+               language: "Francés"
+            },
+            "Germany": {
+               flag: "https://flagcdn.com/w320/de.png",
+               description: "Alemania lidera en energía solar y eólica en Europa...",
+               population: "83 millones",
+               capital: "Berlín",
+               language: "Alemán"
+            }
+         };
 
-
-   <script>
-      // Crear el mapa centrado en el mundo
-      // Definir los límites del desplazamiento
-      var bounds = L.latLngBounds(
-         L.latLng(29.048509529617476, -32.85351351374195), // Suroeste
-         L.latLng(29.048509529617476, 32.85351351374195) // Noreste
-      );
-
-      // Inicializar el mapa
-      var map = L.map('map', {
-         center: [29.048509529617476, -32.85351351374195], // Ubicación inicial
-         zoom: 0,
-         minZoom: 2,
-         maxBounds: bounds, // Restringir el desplazamiento
-         maxBoundsViscosity: 1.0 // Evita salir del área
-      });
-
-      // Agregar la capa de mapa base
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         attribution: '&copy; OpenStreetMap contributors',
-      }).addTo(map);
-
-      // Cargar datos GeoJSON de los países (Fuente: Natural Earth)
-      var geojsonUrl = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json';
-
-      // Datos de países (puedes conectar esto a MySQL en el backend)
-      var countryData = {
-         "Argentina": {
-            population: "45M",
-            gdp: "$500B"
-         },
-         "España": {
-            population: "47M",
-            gdp: "$1.4T"
-         },
-         "México": {
-            population: "126M",
-            gdp: "$1.2T"
-         },
-         "Brasil": {
-            population: "213M",
-            gdp: "$2.0T"
-         },
-         "Estados Unidos": {
-            population: "331M",
-            gdp: "$23T"
-         }
-      };
-
-      // Obtener y cargar los países
-      fetch(geojsonUrl)
-         .then(response => response.json())
-         .then(data => {
-            L.geoJSON(data, {
-               style: function () {
-                  return {
-                     color: "blue",
-                     weight: 1,
-                     fillOpacity: 0.2
-                  };
-               },
-               onEachFeature: function (feature, layer) {
-                  layer.on('click', function () {
-                     var countryName = feature.properties.name;
-                     document.getElementById('country-title').innerText = countryName;
-
-                     // Mostrar datos si existen
-                     if (countryData[countryName]) {
-                        document.getElementById('country-data').innerText =
-                           "Población: " + countryData[countryName].population +
-                           "\nPIB: " + countryData[countryName].gdp;
-                     } else {
-                        document.getElementById('country-data').innerText = "Datos no disponibles.";
-                     }
-
-                     // Mostrar la barra lateral
-                     document.getElementById('sidebar').style.display = 'block';
-                     var elemento = document.getElementById('map');
-                     elemento.style.marginLeft = '0px';
-                  });
-               }
-            }).addTo(map);
+         // Inicializar el mapa
+         var map = L.map('map', {
+            center: [20, 0],
+            zoom: 2,
+            minZoom: 2,
+            maxZoom: 10
          });
 
-      // Función para cerrar la barra lateral
-      function closeSidebar() {
-         document.getElementById('sidebar').style.display = 'none';
-         var elemento = document.getElementById('map');
-         elemento.style.marginLeft = '12%';
-      }
-   </script>
+
+         // Controles personalizados
+         document.getElementById('zoom-in').addEventListener('click', function () {
+            map.zoomIn();
+         });
+
+         document.getElementById('zoom-out').addEventListener('click', function () {
+            map.zoomOut();
+         });
+
+         document.getElementById('reset-view').addEventListener('click', function () {
+            map.setView([20, 0], 2);
+         });
+         // Añadir capa base
+         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+         }).addTo(map);
+
+         // Cargar límites de países con GeoJSON
+         fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
+            .then(response => response.json())
+            .then(data => {
+               L.geoJSON(data, {
+                  style: {
+                     color: "#008000",
+                     weight: 1,
+                     fillOpacity: 0.2
+                  },
+                  onEachFeature: function (feature, layer) {
+                     layer.on('click', function () {
+                        var countryName = feature.properties.name; // Nombre del país
+
+                        console.log("Clic en:", countryName); // Para depuración
+
+                        // Verificar si el país está en countryData
+                        if (countryData[countryName]) {
+                           var data = countryData[countryName];
+
+                           // Actualizar la información en la barra lateral
+                           document.getElementById('country-title').textContent = countryName;
+                           document.getElementById('country-data').textContent = data.description;
+                           document.getElementById('population').textContent = data.population;
+                           document.getElementById('capital').textContent = data.capital;
+                           document.getElementById('language').textContent = data.language;
+                           document.getElementById('country-flag').innerHTML =
+                              `<img src="${data.flag}" width="100%">`;
+
+                           // Mostrar la barra lateral
+                           document.getElementById('sidebar').classList.add('show');
+                        } else {
+                           console.log("País no encontrado en countryData:", countryName);
+                        }
+                     });
+                  }
+               }).addTo(map);
+            });
+
+         // Función para cerrar el sidebar
+         function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('show');
+         }
+      </script>
+
+   </body>
+
+   </html>
+
 
    <script>
       AOS.init();
    </script>
-   <script>
-      // Selecciona el elemento por su ID
-      const elemento = document.getElementById('map');
 
-      // Función que se ejecuta al hacer clic en el elemento
-      elemento.addEventListener('click', function () {
-         // Obtiene las posiciones actuales
-         let posicionIzquierda = parseInt(elemento.style.left, 10);
-
-         // Define el desplazamiento en píxeles
-         const desplazamiento = -12;
-
-         // Calcula las nuevas posiciones
-         posicionIzquierda += desplazamiento;
-         posicionSuperior += desplazamiento;
-
-         // Aplica las nuevas posiciones al elemento 
-         elemento.style.left = posicionIzquierda + '%';
-      });
-   </script>
-  
 
 
 </body>
