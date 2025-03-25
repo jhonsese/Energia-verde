@@ -11,6 +11,7 @@
    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
    <link rel="stylesheet" href="ruta/al/archivo/sweetalert2.min.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </head>
@@ -559,7 +560,11 @@ function irAPagina() {
          if (!isNaN(pageNumber) && pageNumber >= 0 && pageNumber < totalPages) {
             cargarPagina(pageNumber);
          } else {
-            alert("Número de página inválido.");
+            Swal.fire({
+            title: "Numero de pagina invalido",
+            text: "Recuerda que solo admite numeros positivos",
+            icon: "error"
+            });
             document.getElementById("page-input").value = currentPage + 1; // Restaurar valor actual si es inválido
          }
       }
