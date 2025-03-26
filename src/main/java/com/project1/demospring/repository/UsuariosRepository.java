@@ -21,14 +21,19 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
     @Query("SELECT DISTINCT u.time FROM Usuarios u")
     List<String> findDistinctTimes();
 
+    @Query("SELECT DISTINCT u.idcont FROM Usuarios u")
+    List<String> findDistinctIdcont();
+
     @Query("SELECT u FROM Usuarios u " +
            "WHERE (:country IS NULL OR u.country = :country) " +
            "AND (:product IS NULL OR u.product = :product) " +
-           "AND (:time IS NULL OR u.time = :time)")
+           "AND (:time IS NULL OR u.time = :time)" + 
+           "AND (:idcont IS NULL OR u.idcont = :idcont)")
     Page<Usuarios> findByCountryAndProductAndTime(
         @Param("country") String country, 
         @Param("product") String product, 
-        @Param("time") String time, 
+        @Param("time") String time,
+        @Param("idcont") String idcont, 
         Pageable pageable
     );
 }

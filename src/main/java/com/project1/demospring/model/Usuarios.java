@@ -29,14 +29,14 @@ public class Usuarios {
     @Column(name = "unit")
     private String unit;
 
-    @Column(name = "id_cont") // Asegúrate de que el nombre coincida en la BD
-    private String continente;
+    @Column(name = "idcont") 
+    private String idcont;
 
     // Constructor vacío (obligatorio para JPA)
     public Usuarios() {}
 
     // Constructor con parámetros
-    public Usuarios(Long id, String country, String time, String balance, String product, String value, String unit, String continente) {
+    public Usuarios(Long id, String country, String time, String balance, String product, String value, String unit, String idcont) {
         this.id = id;
         this.country = country;
         this.time = time;
@@ -44,7 +44,7 @@ public class Usuarios {
         this.product = product;
         this.value = value;
         this.unit = unit;
-        this.continente = continente;
+        this.idcont = idcont;
     }
 
     // Getters y Setters
@@ -104,11 +104,11 @@ public class Usuarios {
         this.unit = unit;
     }
 
-    public String getContinente() {
-        return continente;
+    public String getIdcont() {
+        return idcont;
     }
 
-    public void setContinente(String continente) {
-        this.continente = continente;
+    public void setIdcont(String idcont) {
+        this.idcont = idcont;
     }
 }

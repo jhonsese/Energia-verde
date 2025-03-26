@@ -235,7 +235,7 @@
                <h1>Consumo y Producción</h1>
                <div class="search-container2">
                   <div class="search-filter2">
-                     <select id="region-filter" onchange="cargarPaises()">
+                     <select id="cont-filter" onchange="cargarPaises()">
                         <option value="">Seleccione una continente</option>
                      </select>
 
@@ -546,12 +546,14 @@
          cargarPaises();
          cargarProductos();
          cargarFechas();
+         cargarCont();
          cargarPagina(0);
 
          // Event listeners para los filtros
          document.getElementById("country-filter").addEventListener("change", () => cargarPagina(0));
          document.getElementById("product-filter").addEventListener("change", () => cargarPagina(0));
          document.getElementById("time-filter").addEventListener("change", () => cargarPagina(0));
+         document.getElementById("cont-filter").addEventListener("change", () => cargarPagina(0));
       });
 
       function cargarPagina(page) {
@@ -561,11 +563,13 @@
          let country = document.getElementById("country-filter").value;
          let product = document.getElementById("product-filter").value;
          let time = document.getElementById("time-filter").value;
+         let idcont = document.getElementById("cont-filter").value;
 
          let url = `/api/usuarios?page=${page}&size=5`;
          if (country) url += `&country=${encodeURIComponent(country)}`;
          if (product) url += `&product=${encodeURIComponent(product)}`;
          if (time) url += `&time=${encodeURIComponent(time)}`;
+         if (idcont) url += `&idcont=${encodeURIComponent(idcont)}`;
 
          fetch(url)
             .then(response => response.json())
@@ -581,7 +585,7 @@
               <td>${usuario.time}</td>
               <td>${usuario.balance}</td>
               <td>${usuario.product}</td>
-              <td>${usuario.continente}</td>
+              <td>${usuario.idcont}</td>
               <td>${usuario.value}</td>
               <td>${usuario.unit}</td>  
           `;
@@ -616,6 +620,7 @@
             })
             .catch(error => console.error("Error cargando los países:", error));
       }
+      
 
       function cargarProductos() {
          fetch("/api/productos")
@@ -647,6 +652,22 @@
                });
             })
             .catch(error => console.error("Error cargando las fechas:", error));
+      }
+
+      function cargarCont() {
+         fetch("/api/idcont")
+            .then(response => response.json())
+            .then(idconts => {
+               const select = document.getElementById("cont-filter");
+               select.innerHTML = `<option value="">Seleccione un continente</option>`;
+               idconts.forEach(idcont => {
+                  const option = document.createElement("option");
+                  option.value = idcont;
+                  option.textContent = idcont;
+                  select.appendChild(option);
+               });
+            })
+            .catch(error => console.error("Error cargando los continentes:", error));
       }
 
       document.getElementById("page-input").addEventListener("keypress", function (event) {

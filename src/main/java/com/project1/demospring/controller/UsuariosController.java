@@ -24,7 +24,7 @@ public class UsuariosController {
     public String listarUsuarios(Model model,
                                  @RequestParam(defaultValue = "0") int page,
                                  @RequestParam(defaultValue = "5") int size) {
-        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, null, null,null );
+        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, null, null, null, null);
 
         model.addAttribute("usuarios", paginaUsuarios.getContent());
         model.addAttribute("currentPage", page);
@@ -55,8 +55,9 @@ public class UsuariosController {
                                                  @RequestParam(defaultValue = "5") int size,
                                                  @RequestParam(required = false) String country,
                                                  @RequestParam(required = false) String product,
-                                                 @RequestParam(required = false) String time) {
-        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, country, product, time);
+                                                 @RequestParam(required = false) String time,
+                                                 @RequestParam(required = false) String idcont) {
+        Page<Usuarios> paginaUsuarios = usuariosService.obtenerUsuariosPaginados(page, size, country, product, time, idcont);
 
         return ResponseEntity.ok().body(Map.of(
             "usuarios", paginaUsuarios.getContent(),
@@ -86,6 +87,11 @@ public class UsuariosController {
         return ResponseEntity.ok(times);
     }
 
-
+    @GetMapping("/api/idcont")
+    @ResponseBody
+    public ResponseEntity<?> obtenerIdcont() {
+        List<String> idcont = usuariosService.obtenerIdcont(); // Implementa este método en tu servicio
+        return ResponseEntity.ok(idcont);
+    }
 }
 
