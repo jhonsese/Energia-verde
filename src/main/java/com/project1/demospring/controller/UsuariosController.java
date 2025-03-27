@@ -93,4 +93,6 @@ public class UsuariosController {
         List<String> idcont = usuariosService.obtenerIdcont(); // Implementa este método en tu servicio
         return ResponseEntity.ok(idcont);
     }
+
+   
 }

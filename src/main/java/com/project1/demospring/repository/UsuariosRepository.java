@@ -36,4 +36,6 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
         @Param("idcont") String idcont, 
         Pageable pageable
     );
+
+
 }

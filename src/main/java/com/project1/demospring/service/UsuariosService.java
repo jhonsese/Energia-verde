@@ -8,7 +8,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UsuariosService {
@@ -36,4 +39,6 @@ public class UsuariosService {
         Pageable pageable = PageRequest.of(page, size);
         return usuariosRepository.findByCountryAndProductAndTime(country, product, time, idcont, pageable);
     }
+
+
 }
