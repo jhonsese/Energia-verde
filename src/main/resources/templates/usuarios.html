@@ -827,18 +827,16 @@ function irAPagina() {
  let pageNumber = parseInt(pageInput, 10) - 1;
 
  if (!isNaN(pageNumber) && pageNumber >= 0 && pageNumber < totalPages) {
-     cargarPagina(pageNumber);
- } else {
-     alert("Número de página inválido.");
-     document.getElementById("page-input").value = currentPage + 1; // Restaurar valor actual si es inválido
- }
-}
-
-   document.getElementById("page-input").addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-         irAPagina();
+            cargarPagina(pageNumber);
+         } else {
+            Swal.fire({
+            title: "Numero de pagina invalido",
+            text: "Recuerda que solo admite numeros positivos",
+            icon: "error"
+            });
+            document.getElementById("page-input").value = currentPage + 1; // Restaurar valor actual si es inválido
+         }
       }
-   });
 
 </script>
    </script>
