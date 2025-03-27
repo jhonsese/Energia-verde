@@ -8,10 +8,16 @@ public class Contactanos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "email")
     private String email;
+    
+    @Column(name = "comentario")
     private String comentario;
 
     // Constructor vacío

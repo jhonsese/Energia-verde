@@ -15,6 +15,8 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
    <!-- Font Awesome para iconos -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -202,17 +204,12 @@
                               </div>
                            </div>
                         </section>
-                        <button class="more-info-btn">
-                           <i class="fas fa-info-circle"></i> Ver perfil completo
-                        </button>
+
                      </div>
                   </div>
                </div>
             </div>
-            <span id="hydro"></span><br>
-            <span id="solar"></span><br>
 
-            <span id="wind"></span><br>
             <div class="eco-info-boxes">
                <div class="eco-info-box">
                   <div class="eco-info-icon">
@@ -242,7 +239,155 @@
          </div>
       </section>
 
-      <section class="section-2" id="nosotros">
+      <section class="contenedor" id="comparador">
+         <h1>Compara entre regiones.</h1>
+         <p> En el siguiente apartado podrás hacer una comparación más concisa de la producción de energía entre los
+            diferentes países y regiones bajo estudio.</p>
+         <p class="espacio">Si desea conocer el comportamiento anual de las diferentes regiones y un compendio de
+            diferentes comparaciones, en el apartado <b>Elige el año</b> escoja <b>Anual</b></p>
+         <div class="botones">
+            <div class="selectora">
+               <label for="pais1">Elige el país 1</label>
+               <select id="pais1">
+                  <option value="">Cargando países...</option> <!-- Se llenará dinámicamente -->
+               </select>
+            </div>
+            <div class="selectora">
+               <label for="pais2">Elige el país 2</label>
+               <select id="pais2">
+
+                  <option value="">Cargando países...</option> <!-- Se llenará dinámicamente -->
+
+               </select>
+            </div>
+            <div class="selectora">
+               <label for="anio">Elige el año</label>
+               <select id="anio">
+                  <option value="seleccione un año">Seleccione un año</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="Anual">Anual</option>
+               </select>
+            </div>
+            <div class="selectora">
+               <label for="mes">Elige</label>
+               <select id="mes">
+                  <option value="">Cargando...</option> <!-- Se llenará dinámicamente -->
+               </select>
+            </div>
+            <button id="comparar" class="pagination-btn:hover ">Generar Comparación</button>
+         </div>
+         <div class="contenido1">
+            <h2 class="espacio"> Estadísticas</h2>
+
+            <div class="tcomp">
+               <table id="tablaComparaciona">
+                  <thead>
+                     <tr>
+                        <th>Tipo energía. </th>
+                        <th>Cantidad (GWh).</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tablaComparacionab"></tbody>
+               </table>
+               <table id="tablaComparacionb">
+                  <thead>
+                     <tr>
+                        <th>Tipo energía. </th>
+                        <th>Cantidad (GWh).</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tablaComparacionbb"></tbody>
+               </table>
+            </div>
+
+            <div class="resultados">
+               <p>Porcentaje de Energía Renovable Respecto a la Total Producida en <span id="pais1-nombre"></span>:
+                  <strong id="porcentaje-renovable-1">-</strong></p>
+               <p>Porcentaje de Energía Renovable Respecto a la Total Producida en <span id="pais2-nombre"></span>:
+                  <strong id="porcentaje-renovable-2">-</strong></p>
+            </div>
+         </div>
+         <div class="contenido3" style="display: none;">
+            <!-- Inicialmente oculto -->
+            <div class="tcomp">
+               <table id="tablaComparacionc">
+                  <thead>
+                     <tr>
+                        <th>Tipo energía</th>
+                        <th>Cantidad</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tablaComparacioncb"></tbody>
+               </table>
+
+               <table id="tablaComparaciond">
+                  <thead>
+                     <tr>
+                        <th>Tipo energía</th>
+                        <th>Cantidad</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tablaComparaciondb"></tbody>
+               </table>
+            </div>
+            <div class="resultados">
+               <p>Porcentaje de Energía Renovable Respecto a la Total Producida en <span id="pais1-nombre2"></span>:
+                  <strong id="porcentaje-renovable-12">-</strong></p>
+               <p>Porcentaje de Energía Renovable Respecto a la Total Producida en <span id="pais2-nombre2"></span>:
+                  <strong id="porcentaje-renovable-22">-</strong></p>
+            </div>
+
+            <div class="resultados">
+               <p>A Continuación se Presenta un Gráfico de Barras Mostrando el Histórico de la Producción de Energía
+                  Según el Tipo.</p>
+               <canvas id="graficoEnergia"></canvas>
+
+               <canvas id="graficoProduccion" width="200" height="100"></canvas>
+            </div>
+
+            <div class="tcomp">
+               <table id="tcrecimmiento">
+                  <thead>
+                     <tr>
+                        <th>Categoría</th>
+                        <th>2022-2023</th>
+                        <th>2023-2024</th>
+                        <th>Crecimiento Promedio</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tcrecimientoa"></tbody>
+               </table>
+
+               <table id="tcrecimientob">
+                  <thead>
+                     <tr>
+                        <th>Categoría</th>
+                        <th>2022-2023</th>
+                        <th>2023-2024</th>
+                        <th>Crecimiento Promedio</th>
+                     </tr>
+                  </thead>
+                  <tbody id="tcrecimientoc"></tbody>
+               </table>
+
+            </div>
+
+            <h2>Indicaciones generales:</h2>
+            <p>Después de haber desplegado toda esta información relevante sobre la producción de energía renovable, se
+               puede deducir lo siguiente:</p>
+
+            <p id="mensaje1"></p>
+            <p id="mensaje2"></p>
+            <p id="mensaje3"></p>
+
+
+         </div>
+      </section>
+
+
+      <section class="section-2" id="tabla">
 
          <div class="table-container">
             <div class="container">
@@ -346,12 +491,12 @@
                <div class="team-member">
                   <div class="member-photo">
                      <div class="photo-inner" style="background-color: #388e3c;">
-                        <span>MR</span>
+                        <span>JR</span>
                      </div>
                   </div>
                   <div class="member-info">
-                     <h3>Miguel Rodríguez</h3>
-                     <p class="member-position">Director de Tecnología</p>
+                     <h3>Jhoan Sebastián Ríos Gómez </h3>
+                     <p class="member-position">Dev</p>
                      <p class="member-bio">Ingeniero especializado en sistemas fotovoltaicos, Miguel ha desarrollado
                         tecnologías innovadoras que mejoran la eficiencia energética.</p>
                      <div class="member-social">
@@ -366,12 +511,12 @@
                <div class="team-member">
                   <div class="member-photo">
                      <div class="photo-inner" style="background-color: #43a047;">
-                        <span>CS</span>
+                        <span>DR</span>
                      </div>
                   </div>
                   <div class="member-info">
-                     <h3>Carmen Sánchez</h3>
-                     <p class="member-position">Directora de Sostenibilidad</p>
+                     <h3>Daniel Garcia Rios</h3>
+                     <p class="member-position">Dev</p>
                      <p class="member-bio">Experta en políticas ambientales, Carmen asegura que todos nuestros proyectos
                         cumplan con los más altos estándares de sostenibilidad.</p>
                      <div class="member-social">
@@ -386,14 +531,14 @@
                <div class="team-member">
                   <div class="member-photo">
                      <div class="photo-inner" style="background-color: #4caf50;">
-                        <span>JM</span>
+                        <span>OR</span>
                      </div>
                   </div>
                   <div class="member-info">
-                     <h3>Javier Martínez</h3>
-                     <p class="member-position">Ingeniero de Proyectos</p>
-                     <p class="member-bio">Especialista en implementación de sistemas eólicos, Javier ha liderado
-                        proyectos exitosos en más de 15 países.</p>
+                     <h3>Oscar Rojas</h3>
+                     <p class="member-position">Dev</p>
+                     <p class="member-bio">Estudiante de ciencias de la computacion, con algo de experiencia en
+                        el desarrollo de software.</p>
                      <div class="member-social">
                         <a href="#" class="social-icon linkedin"></a>
                         <a href="#" class="social-icon twitter"></a>
@@ -403,69 +548,90 @@
                </div>
             </div>
 
-            <!-- Valores del equipo -->
-            <div class="team-values">
-               <h3>Nuestros Valores</h3>
-               <div class="values-grid">
-                  <div class="value-item">
-                     <div class="value-icon innovation"></div>
-                     <h4>Innovación</h4>
-                     <p>Buscamos constantemente nuevas formas de mejorar la eficiencia y accesibilidad de las energías
+            <!-- Miembro 5 -->
+            <div class="team-member">
+               <div class="member-photo">
+                  <div class="photo-inner" style="background-color: #4caf50;">
+                     <span>AQ</span>
+                  </div>
+               </div>
+               <div class="member-info">
+                  <h3>Alejandro Quintero</h3>
+                  <p class="member-position">Dev</p>
+                  <p class="member-bio">Especialista en implementación de sistemas eólicos, Javier ha liderado
+                     proyectos exitosos en más de 15 países.</p>
+                  <div class="member-social">
+                     <a href="#" class="social-icon linkedin"></a>
+                     <a href="#" class="social-icon twitter"></a>
+                     <a href="#" class="social-icon email"></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Valores del equipo -->
+         <div class="team-values">
+            <h3>Nuestros Valores</h3>
+            <div class="values-grid">
+               <div class="value-item">
+                  <div class="value-icon innovation"></div>
+                  <h4>Innovación</h4>
+                  <p>Buscamos constantemente nuevas formas de mejorar la eficiencia y accesibilidad de las energías
+                     renovables.</p>
+               </div>
+               <div class="value-item">
+                  <div class="value-icon sustainability"></div>
+                  <h4>Sostenibilidad</h4>
+                  <p>Cada decisión que tomamos está guiada por nuestro compromiso con el medio ambiente y las
+                     generaciones futuras.</p>
+               </div>
+               <div class="value-item">
+                  <div class="value-icon collaboration"></div>
+                  <h4>Colaboración</h4>
+                  <p>Trabajamos junto a comunidades, empresas y gobiernos para crear soluciones energéticas
+                     inclusivas.</p>
+               </div>
+            </div>
+         </div>
+
+         <!-- Historia del proyecto -->
+         <div class="team-history">
+            <h3>Nuestra Historia</h3>
+            <div class="history-timeline">
+               <div class="timeline-item">
+                  <div class="timeline-year">2010</div>
+                  <div class="timeline-content">
+                     <h4>Fundación</h4>
+                     <p>Energía Verde nace como una startup con la misión de democratizar el acceso a energías
                         renovables.</p>
                   </div>
-                  <div class="value-item">
-                     <div class="value-icon sustainability"></div>
-                     <h4>Sostenibilidad</h4>
-                     <p>Cada decisión que tomamos está guiada por nuestro compromiso con el medio ambiente y las
-                        generaciones futuras.</p>
+               </div>
+               <div class="timeline-item">
+                  <div class="timeline-year">2015</div>
+                  <div class="timeline-content">
+                     <h4>Expansión Internacional</h4>
+                     <p>Comenzamos operaciones en 5 países de Latinoamérica, llevando soluciones energéticas a
+                        comunidades remotas.</p>
                   </div>
-                  <div class="value-item">
-                     <div class="value-icon collaboration"></div>
-                     <h4>Colaboración</h4>
-                     <p>Trabajamos junto a comunidades, empresas y gobiernos para crear soluciones energéticas
-                        inclusivas.</p>
+               </div>
+               <div class="timeline-item">
+                  <div class="timeline-year">2018</div>
+                  <div class="timeline-content">
+                     <h4>Premio a la Innovación</h4>
+                     <p>Recibimos reconocimiento internacional por nuestro sistema de paneles solares de alta
+                        eficiencia.</p>
+                  </div>
+               </div>
+               <div class="timeline-item">
+                  <div class="timeline-year">2023</div>
+                  <div class="timeline-content">
+                     <h4>Presente y Futuro</h4>
+                     <p>Continuamos creciendo con nuevas tecnologías y soluciones para combatir el cambio climático.
+                     </p>
                   </div>
                </div>
             </div>
-
-            <!-- Historia del proyecto -->
-            <div class="team-history">
-               <h3>Nuestra Historia</h3>
-               <div class="history-timeline">
-                  <div class="timeline-item">
-                     <div class="timeline-year">2010</div>
-                     <div class="timeline-content">
-                        <h4>Fundación</h4>
-                        <p>Energía Verde nace como una startup con la misión de democratizar el acceso a energías
-                           renovables.</p>
-                     </div>
-                  </div>
-                  <div class="timeline-item">
-                     <div class="timeline-year">2015</div>
-                     <div class="timeline-content">
-                        <h4>Expansión Internacional</h4>
-                        <p>Comenzamos operaciones en 5 países de Latinoamérica, llevando soluciones energéticas a
-                           comunidades remotas.</p>
-                     </div>
-                  </div>
-                  <div class="timeline-item">
-                     <div class="timeline-year">2018</div>
-                     <div class="timeline-content">
-                        <h4>Premio a la Innovación</h4>
-                        <p>Recibimos reconocimiento internacional por nuestro sistema de paneles solares de alta
-                           eficiencia.</p>
-                     </div>
-                  </div>
-                  <div class="timeline-item">
-                     <div class="timeline-year">2023</div>
-                     <div class="timeline-content">
-                        <h4>Presente y Futuro</h4>
-                        <p>Continuamos creciendo con nuevas tecnologías y soluciones para combatir el cambio climático.
-                        </p>
-                     </div>
-                  </div>
-               </div>
-            </div>
+         </div>
          </div>
 
          </div>
@@ -520,7 +686,7 @@
                </div>
             </div>
             <div class="footer-bottom">
-               <img src="../static/img/world.svg" alt="">
+               <!-- <img src="../static/img/world.svg" alt=""> -->
                <p>&copy; 2023 Energía Verde. Todos los derechos reservados.</p>
             </div>
          </div>
@@ -580,7 +746,7 @@
               <td>${usuario.product}</td>
               <td>${usuario.idcont}</td>
               <td>${usuario.value}</td>
-              <td>${usuario.unit}</td>  
+              <td>${usuario.unit}</td>
           `;
                   tbody.appendChild(row);
                });
@@ -613,7 +779,7 @@
             })
             .catch(error => console.error("Error cargando los países:", error));
       }
-      
+
 
       function cargarProductos() {
          fetch("/api/productos")
@@ -2515,14 +2681,21 @@
                               `<img src="${data.flag}" width="100%">`;
 
                            if (paises.has(countryName)) {
+                              mostrarSeccion()
+                              function mostrarSeccion() {
+                                 const seccion = document.getElementById('barras');
+                                 if (seccion) {
+                                    seccion.style.display = 'block'; // Mostrar la sección estableciendo display a 'block'
+                                 } else {
+                                    console.error("La sección con id 'barras' no existe en el DOM.");
+                                 }
+                              }
+
                               console.log(`${countryName} está en countryData y en el conjunto paises`);
 
                               let url = `/api/comparacion-anual?country=${encodeURIComponent(countryName)}`;
 
-
                               const anioSeleccionado = "2024";
-
-
 
                               fetch(url)
                                       .then((response) => {
@@ -2542,11 +2715,6 @@
                                          console.log(datosFiltrados);
 
                                          let porcentajes=calcularPorcentajesEnergia(datosFiltrados);
-
-
-
-
-
 
 
                                           console.log("todos",porcentajes)
@@ -2571,17 +2739,17 @@
                                          console.error('Hubo un problema con la operación fetch:', error);
                                       });
 
-                              }else{
-                              ocultarSeccion()
-                              // Función para ocultar la sección
-                              function ocultarSeccion() {
-                                 const seccion = document.getElementById('barras');
-                                 if (seccion) {
-                                    seccion.style.display = 'none'; // Ocultar la sección estableciendo display a 'none'
-                                 } else {
-                                    console.error("La sección con id 'barras' no existe en el DOM.");
-                                 }
-                              }
+                           }else{
+                                    ocultarSeccion()
+                                    // Función para ocultar la sección
+                                    function ocultarSeccion() {
+                                       const seccion = document.getElementById('barras');
+                                       if (seccion) {
+                                          seccion.style.display = 'none'; // Ocultar la sección estableciendo display a 'none'
+                                       } else {
+                                          console.error("La sección con id 'barras' no existe en el DOM.");
+                                       }
+                                    }
 
                            }
 
@@ -2600,7 +2768,63 @@
             document.getElementById('sidebar').classList.remove('show');
          }
 
+         function calcularPorcentajesEnergia(datos) {
+            // Objeto para almacenar los porcentajes organizados por año
+            let resultados = {};
 
+            // Iterar sobre los datos
+            datos.forEach(item => {
+               let { product, year, total_energia } = item;
+
+               // Si el año aún no está en resultados, inicializarlo
+               if (!resultados[year]) {
+                  resultados[year] = {
+                     Porcentajes: {
+                        Hydro: "0%",
+                        Solar: "0%",
+                        Wind: "0%",
+                        TotalRenewables: "0%"
+                     }
+                  };
+               }
+
+               // Asignar valores según el tipo de energía
+               if (product === "Electricity") {
+                  resultados[year].Electricity = total_energia;
+               } else if (product === "Hydro") {
+                  resultados[year].Hydro = total_energia;
+               } else if (product === "Solar") {
+                  resultados[year].Solar = total_energia;
+               } else if (product === "Wind") {
+                  resultados[year].Wind = total_energia;
+               } else if (product.includes("Total Renewables (Hydro, Geo, Solar, Wind, Other)")) {
+                  resultados[year].TotalRenewables = total_energia;
+               }
+            });
+
+            // Calcular porcentajes
+            Object.keys(resultados).forEach(year => {
+               let totalElectricity = resultados[year].Electricity;
+
+               if (totalElectricity > 0) {
+                  resultados[year].Porcentajes = {
+                     Hydro: (resultados[year].Hydro / totalElectricity * 100).toFixed(2) + '%',
+                     Solar: (resultados[year].Solar / totalElectricity * 100).toFixed(2) + '%',
+                     Wind: (resultados[year].Wind / totalElectricity * 100).toFixed(2) + '%',
+                     TotalRenewables: (resultados[year].TotalRenewables / totalElectricity * 100).toFixed(2) + '%'
+                  };
+               }
+
+               // Eliminar los valores absolutos de energía
+               delete resultados[year].Electricity;
+               delete resultados[year].Hydro;
+               delete resultados[year].Solar;
+               delete resultados[year].Wind;
+               delete resultados[year].TotalRenewables;
+            });
+
+            return resultados;
+         }
 
 
       </script>
@@ -2610,12 +2834,6 @@
    </html>
 
 
-   <script>
-      AOS.init();
-   </script>
-
-
-
-</body>
-
-</html>
+<script>
+   AOS.init();
+</script>

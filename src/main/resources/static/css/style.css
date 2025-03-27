@@ -10,8 +10,8 @@ html {
 }
 
 body {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('../img/Fondo-boot.jpg');
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../img/Fondo-boot.jpg'); */
     /* Ruta de la imagen */
     background-size: cover;
     /* Ajusta la imagen al tamaño de la pantalla */
@@ -23,8 +23,8 @@ body {
     /* Mantiene la imagen fija al hacer scroll */
 }
 
- /* Estilos generales */
- * {
+/* Estilos generales */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -34,7 +34,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f9f9f9;
+    background: linear-gradient(180deg, #f9f9f9 0%, #e6f7e9 100%);
 }
 
 .container {
@@ -523,12 +523,12 @@ body {
     .eco-info-boxes {
         flex-wrap: wrap;
     }
-    
+
     .eco-info-box {
         flex: 0 0 calc(50% - 10px);
         margin-bottom: 20px;
     }
-    
+
     #sidebar {
         width: 320px;
     }
@@ -538,19 +538,19 @@ body {
     .eco-header h2 {
         font-size: 2rem;
     }
-    
+
     #map-container {
         height: 450px;
     }
-    
+
     .eco-info-boxes {
         flex-direction: column;
     }
-    
+
     .eco-info-box {
         flex: 0 0 100%;
     }
-    
+
     .map-title-overlay {
         display: none;
     }
@@ -560,25 +560,25 @@ body {
     .eco-header {
         padding: 2rem 0 1.5rem;
     }
-    
+
     .eco-header h2 {
         font-size: 1.8rem;
     }
-    
+
     #map-container {
         height: 400px;
         border-radius: 10px;
     }
-    
+
     #sidebar {
         width: 100%;
     }
-    
+
     .map-controls {
         top: 10px;
         left: 10px;
     }
-    
+
     .map-control-btn {
         width: 35px;
         height: 35px;
@@ -624,7 +624,7 @@ nav {
 
 .container-nav {
     display: flex;
-    max-width: 900px;
+    justify-content: center;
     margin: 0 auto;
     border-radius: 10px;
     padding: 10px;
@@ -660,9 +660,9 @@ nav {
 }
 
 .nav-links {
-    margin-left: 80%;
     display: flex;
     list-style: none;
+    padding: 0px 0px 0px 100px;
 }
 
 .nav-links li {
@@ -682,7 +682,7 @@ nav {
 
 main {
     width: 100%;
-    height: 400vh;
+    height: 500vh;
 }
 
 
@@ -698,9 +698,19 @@ main {
 
 .container-home {
     width: 100%;
-    border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../img/Fondo-boot.jpg');
+    /* Ruta de la imagen */
+    background-size: cover;
+    /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    background-attachment: fixed;
+    /* Mantiene la imagen fija al hacer scroll */
 }
 
 .hero h1 {
@@ -856,34 +866,35 @@ main {
     min-height: 100vh;
     position: relative;
     width: 100%;
-    max-width: 100%; 
-    overflow: hidden; 
+    max-width: 100%;
+    overflow: hidden;
     margin: 0 auto;
 }
 
 .table-wrapper {
-    table-layout: fixed; 
-    width: 100%; 
-    border-collapse: collapse; 
-    word-wrap: break-word; 
-    overflow: hidden; 
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
-.table-container th, 
+.table-container th,
 .table-container td {
-    max-width: 200px; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    white-space: nowrap; 
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .search-filter2 {
     display: flex;
-    align-items: center; 
-    justify-content: center; 
-    gap: 8px; 
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     margin-left: 2px;
     margin-bottom: 12px;
+    flex-wrap: wrap;
 }
 
 .search-container2 {
@@ -913,7 +924,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f9f9f9;
     padding: 90px 0;
 
 }
@@ -1053,9 +1063,9 @@ tbody tr:last-child td {
     text-transform: uppercase;
     letter-spacing: 1px;
     border: 2px solid transparent;
-    border-radius: 4px; 
+    border-radius: 4px;
     text-align: center;
-    display: inline-block; 
+    display: inline-block;
     animation: fadeInUp 1s ease 0.4s;
     animation-fill-mode: both;
 }
@@ -1065,7 +1075,7 @@ tbody tr:last-child td {
     border: 2px solid #3498db(57, 255, 20);
     background-color: rgb(135, 138, 142);
     color: #fff;
-    transform: scale(1.05); 
+    transform: scale(1.05);
     box-shadow: 0 8px 14px #3498db(57, 255, 20, 0.6);
 }
 
@@ -1562,4 +1572,190 @@ img {
     height: 50px;
     width: 50px;
 
+}
+
+/* Comparador */
+.contenedor {
+    font-family: Arial, sans-serif;
+    width: 90%;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    position: relative;
+    margin: 70px auto 40px auto;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.botones {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+
+
+.tcomp {
+    gap: 100px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+thead {
+    background: #2a1f4f;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    background: #0f0f2c;
+    color: white;
+    font-size: 16px;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+tbody tr:nth-child(odd) {
+    background: white;
+}
+
+tbody tr:hover {
+    background: #f1f1f1;
+}
+
+.pagination-btn:hover {
+    border: 1px solid #000;
+    background-color: #9fe0a3;
+}
+
+
+.selectora {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra los elementos */
+    margin-bottom: 15px;
+    /* Espacio entre selectores */
+}
+
+.selectora label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    /* Espacio entre el label y el select */
+    text-align: center;
+    /* Asegura que el texto esté centrado */
+}
+
+.espacio {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.resultados {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#comparar {
+    background-color: #2E7D32;
+    /* Verde oscuro */
+    color: white;
+    /* Texto en blanco */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    /* Bordes redondeados */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    text-align: center;
+}
+
+#comparar:hover {
+    background-color: #1B5E20;
+    /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05);
+    /* Efecto de agrandamiento */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#comparar:active {
+    background-color: #0D3C13;
+    /* Color aún más oscuro al hacer clic */
+    transform: scale(0.98);
+    /* Ligera reducción para efecto de presión */
+}
+
+.contenido1 {
+    display: none;
+    /* Oculto inicialmente */
+    opacity: 0;
+    /* Totalmente transparente */
+    transition: opacity 1s ease-in-out;
+    /* Animación suave de 1 segundo */
+}
+
+.selectora select {
+    width: 100%;
+    /* Ajustar al ancho del div */
+    padding: 10px;
+    font-size: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contenido2 {
+    display: none;
+    /* Oculto inicialmente */
+    opacity: 0;
+    /* Totalmente transparente */
+    transition: opacity 1s ease-in-out;
+    /* Animación suave de 1 segundo */
+}
+
+.contenido3 {
+    display: none;
+    /* Oculto inicialmente */
+    opacity: 0;
+    /* Totalmente transparente */
+    transition: opacity 1s ease-in-out;
+    /* Animación suave de 1 segundo */
 }
