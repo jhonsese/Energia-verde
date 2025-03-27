@@ -141,7 +141,7 @@
                      layer.on('click', function () {
                         var countryName = feature.properties.name; // Nombre del país
 
-                        console.log("Clic en:", countryName); // Para depuración
+                        // console.log("Clic en:", countryName); // Para depuración
 
                         // Verificar si el país está en countryData
                         if (countryData[countryName]) {
@@ -159,7 +159,7 @@
                            // Mostrar la barra lateral
                            document.getElementById('sidebar').classList.add('show');
                         } else {
-                           console.log("País no encontrado en countryData:", countryName);
+                           // console.log("País no encontrado en countryData:", countryName);
                         }
                      });
                   }
