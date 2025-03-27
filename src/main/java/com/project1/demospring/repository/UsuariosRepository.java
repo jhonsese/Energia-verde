@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.domain.Page; 
 import org.springframework.data.domain.Pageable; 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
@@ -36,4 +37,31 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Long> {
         @Param("idcont") String idcont, 
         Pageable pageable
     );
+
+    @Query("SELECT u.product, u.value FROM Usuarios u " +
+            "WHERE u.product IN ('Solar', 'Wind', 'Hydro', 'Total Combustible Fuels', 'Electricity','Total Renewables (Hydro, Geo, Solar, Wind, Other)') " +
+            "AND u.balance ='Net Electricity Production'"+
+            "AND (:country IS NULL OR u.country = :country) " +
+            "AND (:time IS NULL OR u.time = :time)")
+
+    List<Object[]> findProductAndValueByCountryAndTime(@Param("country") String country,
+                                                       @Param("time") String time);
+
+    @Query(value = """
+    SELECT
+        RIGHT(u.time, 4) AS anio,
+        u.product AS product, 
+        SUM(CAST(u.value AS DECIMAL(10,2))) AS totalEnergia
+    FROM energia u
+    WHERE u.country = :country
+    AND u.balance = 'Net Electricity Production'
+    AND u.product IN ('Electricity', 'Hydro', 'Total Combustible Fuels', 'Solar', 
+                      'Total Renewables (Hydro, Geo, Solar, Wind, Other)', 'Wind')
+    GROUP BY anio, u.product
+    ORDER BY anio ASC
+    """, nativeQuery = true)
+    List<Object[]> findAnnualSummaryByCountry(@Param("country") String country);
+
+
 }
+
