@@ -66,6 +66,32 @@ function cargarPagina(page) {
       .catch(error => console.error("Error cargando la página:", error));
 }
 
+const paisesTraducidos = {
+    "Australia": "Australia", "Austria": "Austria", "Belgium": "Bélgica",
+    "Canada": "Canadá", "Chile": "Chile", "Colombia": "Colombia",
+    "Costa Rica": "Costa Rica", "Czech Republic": "República Checa",
+    "Denmark": "Dinamarca", "Estonia": "Estonia", "Finland": "Finlandia",
+    "France": "Francia", "Germany": "Alemania", "Greece": "Grecia",
+    "Hungary": "Hungría", "Iceland": "Islandia", "Ireland": "Irlanda",
+    "Italy": "Italia", "Japan": "Japón", "Korea": "Corea",
+    "Latvia": "Letonia", "Lithuania": "Lituania", "Luxembourg": "Luxemburgo",
+    "Mexico": "México", "Netherlands": "Países Bajos",
+    "New Zealand": "Nueva Zelanda", "Norway": "Noruega",
+    "Poland": "Polonia", "Portugal": "Portugal",
+    "Slovak Republic": "República Eslovaca", "Slovenia": "Eslovenia",
+    "Spain": "España", "Sweden": "Suecia", "Switzerland": "Suiza",
+    "Republic of Turkiye": "República de Turquía",
+    "United Kingdom": "Reino Unido", "United States": "Estados Unidos",
+    "OECD Americas": "OCDE América", "OECD Asia Oceania": "OCDE Asia Oceanía",
+    "OECD Europe": "OCDE Europa", "OECD Total": "Total OCDE",
+    "IEA Total": "Total AIE", "Argentina": "Argentina", "Brazil": "Brasil",
+    "Bulgaria": "Bulgaria", "People's Republic of China": "República Popular China",
+    "Croatia": "Croacia", "Cyprus": "Chipre", "India": "India",
+    "Malta": "Malta", "North Macedonia": "Macedonia del Norte",
+    "Romania": "Rumania", "Serbia": "Serbia"
+};
+
+
 function cargarPaises(selectId) {
    fetch("/api/paises")
       .then(response => response.json())
@@ -80,7 +106,7 @@ function cargarPaises(selectId) {
          paises.forEach(pais => {
             const option = document.createElement("option");
             option.value = pais;
-            option.textContent = pais;
+            option.textContent = paisesTraducidos[pais] || pais;
             select.appendChild(option);
          });
       })
@@ -168,7 +194,8 @@ const etiquetasPersonalizadas = {
     "Hydro": "Energía Hidroeléctrica",
     "Total Combustible Fuels": "Combustibles Fósiles",
     "Electricity": "Electricidad Total",
-    "Total Renewables (Hydro, Geo, Solar, Wind, Other)": "Total Energía Renovable"
+    "Total Renewables (Hydro, Geo, Solar, Wind, Other)": "Total Energía Renovable",
+    "TotalRenewables":"Total Energía Renovable"
 };
 // LISTENER GENERAL
 document.addEventListener("DOMContentLoaded", function () {
@@ -330,8 +357,12 @@ function realizarComparacion() {
 
             actualizarTabla("tablaComparacionbb", data2);
 
-            calcularPorcentajeRenovable("pais1-nombre", data1, country1, "porcentaje-renovable-1");
-            calcularPorcentajeRenovable("pais2-nombre", data2, country2, "porcentaje-renovable-2");
+            calcularPorcentajeRenovable("pais1-nombre", data1, paisesTraducidos[country1] || country1,  "porcentaje-renovable-1");
+            calcularPorcentajeRenovable("pais2-nombre", data2, paisesTraducidos[country2] || country2, "porcentaje-renovable-2");
+
+
+            actualizarTexto(country1, "resultado1a");
+            actualizarTexto(country2, "resultado2a");
 
 
 
@@ -365,7 +396,12 @@ function ocultarElementos(claseOcultar) {
 }
 
 
+function actualizarTexto(pais, resultadoId) {
+    let resultado = document.getElementById(resultadoId);
 
+        resultado.textContent = paisesTraducidos[pais] || pais;
+
+}
 
 function actualizarTabla(tablaId, data) {
     let tbody = document.getElementById(tablaId);
@@ -393,6 +429,7 @@ function actualizarTabla(tablaId, data) {
 
 
 function calcularPorcentajeRenovable(IdTexto, data, country, IdPorcent) {
+    console.log("midata", data);
     let spanPorcentaje = document.getElementById(IdPorcent);
     let spanPais = document.getElementById(IdTexto);
 
@@ -403,28 +440,15 @@ function calcularPorcentajeRenovable(IdTexto, data, country, IdPorcent) {
     }
 
     // Inicializar acumuladores para energía renovable y total
-    let totalElectricidad = 0;
-    let totalRenovable = 0;
-
-    // Iterar sobre los datos para identificar los valores de "Electricity" y "Total Renewables"
-    data.forEach(entry => {
-        const { product, total_energia } = entry;
-
-        if (product === "Electricity") {
-            totalElectricidad += total_energia; // Asignar el total de energía producida
-        }
-
-        if (product === "Total Renewables (Hydro, Geo, Solar, Wind, Other)") {
-            totalRenovable += total_energia; // Sumar el total de energía renovable
-        }
-    });
+    let totalElectricidad = data.Electricity || 0; // Tomar directamente la propiedad "Electricity"
+    let totalRenovable = data["Total Renewables (Hydro, Geo, Solar, Wind, Other)"] || 0; // Tomar directamente la propiedad "Total Renewables"
 
     // Evitar división por 0 y calcular el porcentaje
     let porcentaje = (totalElectricidad === 0) ? 0 : (totalRenovable / totalElectricidad) * 100;
 
     // Actualizar el contenido en la UI
-    spanPais.textContent = country; // Mostrar el nombre del país
-    spanPorcentaje.textContent = `${porcentaje.toFixed(2)}%`; // Mostrar porcentaje con 2 decimales
+    spanPais.textContent = paisesTraducidos[country] || country; // Mostrar el nombre del país traducido
+    spanPorcentaje.textContent = `${porcentaje.toFixed(2)}%`; // Mostrar el porcentaje con 2 decimales
 
     // Devolver el porcentaje
     return porcentaje.toFixed(2); // Devolver el porcentaje con 2 decimales
@@ -436,6 +460,23 @@ function realizarComparacionAnual() {
     let country1 = document.getElementById("pais1").value;
     let country2 = document.getElementById("pais2").value;
     let year = document.getElementById("mes").value; // Selector de año
+
+    // ✅ Verificar que ambos países sean diferentes antes de la petición
+    if (!country1 || !country2) {
+        alert("Por favor seleccione ambos países.");
+        return;
+    }
+    if (country1 === country2) {
+        alert("Por favor seleccione dos países diferentes.");
+        return;
+    }
+
+    // ✅ Verificar que se haya seleccionado mes y año
+    if (!mes || !anio) {
+        alert("Por favor seleccione parámetros.");
+        return;
+    }
+
 
     ocultarElementos(".contenido1");
 
@@ -468,16 +509,21 @@ function realizarComparacionAnual() {
             const p1 = calcularPorcentajesEnergia(data1);
             const p2 = calcularPorcentajesEnergia(data2);
             // console.log("📊 Datos Porcentaje:", p1, p2);
-            crearGraficoEnergia(p1, p2, country1, country2, year);
+            crearGraficoEnergia(p1, p2,paisesTraducidos[country1] || country1, paisesTraducidos[country2] || country2, year);
 
             // console.log("crecimiento anual",calcularCrecimientoEnergia(data1));
 
             actualizarTablaCrecimiento("tcrecimientoa", calcularCrecimientoEnergia(data1));
             actualizarTablaCrecimiento("tcrecimientoc", calcularCrecimientoEnergia(data2));
 
-            escrito1(country1, country2, porcentaje1, porcentaje2);
-            escrito2(country1, country2, p1, p2);
-            escrito3(country1, country2, calcularCrecimientoEnergia(data1), calcularCrecimientoEnergia(data2))
+            actualizarTexto(country1, "resultado1b");
+            actualizarTexto(country2, "resultado2b");
+            actualizarTexto(country1, "resultado3b");
+            actualizarTexto(country2, "resultado4b");
+
+            escrito1(paisesTraducidos[country1] || country1, paisesTraducidos[country2] || country2, porcentaje1, porcentaje2);
+            escrito2(paisesTraducidos[country1] || country1, paisesTraducidos[country2] || country2, p1, p2);
+            escrito3(paisesTraducidos[country1] || country1, paisesTraducidos[country2] || country2, calcularCrecimientoEnergia(data1), calcularCrecimientoEnergia(data2))
 
 
         })
@@ -495,9 +541,15 @@ function actualizarTablaAnual(tablaId, data) {
 
     tbody.innerHTML = ""; // ✅ Se limpia la tabla antes de llenarla
 
+    const ordenEnergia = ["Solar", "Wind", "Hydro",
+        "Total Renewables (Hydro, Geo, Solar, Wind, Other)",
+        "Total Combustible Fuels", "Electricity"];
+
     // Iterar sobre los datos proporcionados
     data.forEach(entry => {
         const { product, total_energia } = entry; // Extraemos las propiedades necesarias
+
+
 
         // Obtenemos la etiqueta personalizada o usamos el nombre original si no está en el diccionario
         let etiqueta = etiquetasPersonalizadas[product] || product;
@@ -508,6 +560,8 @@ function actualizarTablaAnual(tablaId, data) {
         tbody.appendChild(row);
     });
 }
+
+
 
 function calcularPorcentajeRenovableAnual(IdTexto, data, country, IdPorcent) {
     let spanPorcentaje = document.getElementById(IdPorcent);
@@ -615,6 +669,11 @@ const mesesPorAnio = {
     "Anual":["2022","2023","2024"]
 };
 
+const dicMes = {
+    "August": "Agosto", "September": "Septiembre", "October": "Octubre", "November": "Noviembre", "December": "Diciembre", "January": "Enero", "February": "Febrero",
+    "March": "Marzo", "April": "Abril", "May": "Mayo", "June": "Junio", "July": "Julio"
+};
+
 
 // Cargar meses automáticamente cuando el usuario cambia el año
 document.addEventListener("DOMContentLoaded", function () {
@@ -639,7 +698,7 @@ function cargarMeses() {
     meses.forEach(mes => {
         let option = document.createElement("option");
         option.value = mes;
-        option.textContent = mes;
+        option.textContent = dicMes[mes] || mes;
         selectMes.appendChild(option);
     });
 }
@@ -786,7 +845,7 @@ const categorias = Object.keys(data);
 // Agregar filas a la tabla para cada categoría
 categorias.forEach(categoria => {
  // Crear una fila para la categoría actual
- let filaHTML = `<tr><td>${categoria}</td>`; // Primera columna: categoría
+ let filaHTML = `<tr><td>${etiquetasPersonalizadas[categoria] || categoria}</td>`; // Primera columna: categoría
 
  // Agregar valores para 2022-2023, 2023-2024, y PromedioCrecimiento
  const rangos = ["2022-2023", "2023-2024", "PromedioCrecimiento"];
@@ -805,7 +864,7 @@ function escrito1(pais1, pais2, porcentaje1, porcentaje2) {
     let mensajes = [];
 
     if (Math.abs(porcentaje1 - porcentaje2) <= 7) {
-        mensajes.push(`Tanto ${pais1} como ${pais2} se encuentran en los mismos niveles de producción, `);
+        mensajes.push(`Tanto ${pais1} como ${pais2} se encuentran en los mismos niveles de producción de energía, `);
 
         let x = (porcentaje1 + porcentaje2) / 2;
 
@@ -816,21 +875,21 @@ function escrito1(pais1, pais2, porcentaje1, porcentaje2) {
         } else if (x < 80) {
             mensajes.push("y han alcanzado una fase relativamente avanzada. Se les motiva a seguir mejorando sus estrategias.");
         } else {
-            mensajes.push(", alcanzando niveles excelentes. Se puede decir que ya están plenamente alineados con el Objetivo de Desarrollo Sostenible (ODS) número 7 de la ONU.");
+            mensajes.push(" alcanzando niveles excelentes. Se puede decir que ambos ya están plenamente alineados con el Objetivo de Desarrollo Sostenible (ODS) número 7 de la ONU.");
         }
     } else {
         let paisMayor = porcentaje1 > porcentaje2 ? pais1 : pais2;
         let paisMenor = porcentaje1 > porcentaje2 ? pais2 : pais1;
         let porcentajeMayor = Math.max(porcentaje1, porcentaje2);
 
-        mensajes.push(`${paisMayor} está en mejores condiciones que ${paisMenor}.`);
+        mensajes.push(`${paisMayor} está en mejores condiciones de producción de energía renovable que ${paisMenor}.`);
 
         if (porcentajeMayor < 20) {
-            mensajes.push(` Sin embargo, ${paisMayor} aún no cuenta con la infraestructura de generación suficiente para ser energéticamente independiente de los combustibles fósiles. Se espera que ambos países mejoren sus estrategias.`);
+            mensajes.push(`Sin embargo, ${paisMayor} aún no cuenta con la infraestructura de generación suficiente para ser energéticamente independiente de los combustibles fósiles. Se espera que ambos países mejoren sus estrategias.`);
         } else if (porcentajeMayor < 40) {
-            mensajes.push(` Aunque ${paisMayor} aún está en proceso de convertirse en un país energéticamente limpio, se motiva a ${paisMenor} a indagar sobre sus estrategias, aprender de su proceso y determinar un camino a seguir en conjunto.`);
+            mensajes.push(`Aunque ${paisMayor} aún está en proceso de convertirse en un país energéticamente limpio, se motiva a ${paisMenor} a indagar sobre sus estrategias, aprender de su proceso y determinar un camino a seguir en conjunto.`);
         } else if (porcentajeMayor < 80) {
-            mensajes.push(` ${paisMayor} ha avanzado considerablemente en energía sostenible y puede servir de referencia para ${paisMenor}.`);
+            mensajes.push(` Se nota que ${paisMayor} ha avanzado considerablemente en energía sostenible y que posiblemente puede servir de referencia para ${paisMenor}.`);
         } else {
             mensajes.push(` Dado que ${paisMayor} ha realizado grandes esfuerzos por ser energéticamente sostenible, sería beneficioso que ${paisMenor} estudie en detalle sus estrategias y las implemente según sus condiciones geológicas, hidrológicas y meteorológicas.`);
         }
@@ -852,14 +911,13 @@ function escrito2(pais1, pais2, p1, p2) {
     let resultado = calcularPromedioYOrdenar(p1, p2, etiquetasPersonalizadas);
 
     // Obtener los dos primeros elementos de cada país
-    let top2P1 = resultado.p1.slice(0, 2).join(", "); // Primeros 2 elementos de p1
-    let top2P2 = resultado.p2.slice(0, 2).join(", "); // Primeros 2 elementos de p
+    let top2P1 = resultado.p1.slice(0, 2).join(" y la "); // Primeros 2 elementos de p1
+    let top2P2 = resultado.p2.slice(0, 2).join(" y la "); // Primeros 2 elementos de p
 
 
     // Construcción del mensaje con los datos obtenidos
-    let mensaje2 = `Por otro lado, es importante fomentar, independientemente de las condiciones de generación actuales, la implementación de energías renovables.
-Específicamente, se debe potenciar los tipos de energía que tienen mayor participación en la producción de energía renovable, ya que esto indica que las condiciones del país facilitan su generación.
-Hablando más específicamente, para ${pais1} se destacan (${top2P1}), y para ${pais2}, (${top2P2}).`;
+    let mensaje2 = `Por otro lado, es importante fomentar, independientemente de las condiciones de generación actuales, la implementación de energías renovables. Es recomendable potenciar los tipos de energía que tienen mayor participación en la producción de energía renovable, ya que esto indica que las condiciones del país facilitan su generación. 
+    Hablando más específicamente, en promedio, para ${pais1} se destacan la ${top2P1}, mientras que, para ${pais2}, resaltan la ${top2P2}.`;
     document.getElementById("mensaje2").textContent = mensaje2;
 
     return mensaje2;

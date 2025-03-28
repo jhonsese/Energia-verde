@@ -165,7 +165,7 @@
                         </div>
                         <section id="barras">
                            <div class="eco-stats-title">
-                              <i class="fas fa-leaf"></i> Indicadores de sostenibilidad
+                              <i class="fas fa-leaf"></i> Indicadores de sostenibilidad (2024)
                            </div>
 
                            <div class="eco-indicators">
@@ -248,7 +248,7 @@
          <p> En el siguiente apartado podrás hacer una comparación más concisa de la producción de energía entre los
             diferentes países y regiones bajo estudio.</p>
          <p class="espacio">Si desea conocer el comportamiento anual de las diferentes regiones y un compendio de
-            diferentes comparaciones, en el apartado <b>Elige el año</b> escoja <b>Anual</b></p>
+            diferentes análisis en producción de energía entre ellas, en el apartado <b>Elige el año</b> escoja <b>Anual</b></p>
          <div class="botones">
             <div class="selectora">
                <label for="pais1">Elige el país 1</label>
@@ -283,7 +283,11 @@
             <button id="comparar" class="pagination-btn:hover ">Generar Comparación</button>
          </div>
          <div class="contenido1">
-            <h2 class="espacio"> Estadísticas</h2>
+
+            <div class="titulopais">
+               <h2 id="resultado1a"></h2>
+               <h2 id="resultado2a"></h2>
+            </div>
 
             <div class="tcomp">
                <table id="tablaComparaciona">
@@ -307,14 +311,19 @@
             </div>
 
             <div class="resultados">
-               <p>Porcentaje de Energía Renovable Respecto a la Total Producida en <span id="pais1-nombre"></span>:
+               <p>Porcentaje de Energía Renovable Respecto a la Total Producida en <span id="pais1-nombre"></span> durante el mes:
                   <strong id="porcentaje-renovable-1">-</strong></p>
-               <p>Porcentaje de Energía Renovable Respecto a la Total Producida en <span id="pais2-nombre"></span>:
+               <p>Porcentaje de Energía Renovable Respecto a la Total Producida en <span id="pais2-nombre"></span> durante el mes:
                   <strong id="porcentaje-renovable-2">-</strong></p>
             </div>
          </div>
          <div class="contenido3" style="display: none;">
+
             <!-- Inicialmente oculto -->
+            <div class="titulopais">
+               <h2 id="resultado1b"></h2>
+               <h2 id="resultado2b"></h2>
+            </div>
             <div class="tcomp">
                <table id="tablaComparacionc">
                   <thead>
@@ -350,7 +359,10 @@
 
                <canvas id="graficoProduccion" width="200" height="100"></canvas>
             </div>
-
+            <div class="titulopais">
+               <h2 id="resultado3b"></h2>
+               <h2 id="resultado4b"></h2>
+            </div>
             <div class="tcomp">
                <table id="tcrecimmiento">
                   <thead>
@@ -381,12 +393,13 @@
             <h2>Indicaciones generales:</h2>
             <p>Después de haber desplegado toda esta información relevante sobre la producción de energía renovable, se
                puede deducir lo siguiente:</p>
-
-            <p id="mensaje1"></p>
-            <p id="mensaje2"></p>
-            <p id="mensaje3"></p>
-
-
+            <div class="recomendaciones">
+               <ol>
+                  <li id="mensaje1" class="espacio"></li>
+                  <li id="mensaje2" class="espacio"></li>
+                  <li id="mensaje3" class="espacio"></li>
+               </ol>
+            </div>
          </div>
       </section>
 
@@ -521,8 +534,7 @@
                   <div class="member-info">
                      <h3>Daniel Garcia Rios</h3>
                      <p class="member-position">Dev</p>
-                     <p class="member-bio">Experta en políticas ambientales, Carmen asegura que todos nuestros proyectos
-                        cumplan con los más altos estándares de sostenibilidad.</p>
+                     <p class="member-bio">Estudiante de Ingeniería Eléctrica (Unalmed). Encargado de los conceptos eléctricos del sitio.</p>
                      <div class="member-social">
                         <a href="#" class="social-icon linkedin"></a>
                         <a href="#" class="social-icon twitter"></a>

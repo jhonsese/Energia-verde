@@ -1072,11 +1072,11 @@ tbody tr:last-child td {
 
 /* Efecto al pasar el mouse */
 .pagination-btn:hover {
-    border: 2px solid #3498db(57, 255, 20);
+    border: 2px solid #3498db; /* Se eliminó el intento de función incorrecta */
     background-color: rgb(135, 138, 142);
     color: #fff;
     transform: scale(1.05);
-    box-shadow: 0 8px 14px #3498db(57, 255, 20, 0.6);
+    box-shadow: 0 8px 14px rgba(57, 255, 20, 0.6); /* Se corrigió el formato de color */
 }
 
 .pagination-input {
@@ -1613,7 +1613,19 @@ select {
     align-items: center;
 }
 
+.titulopais {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Distribuye los elementos equitativamente */
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
 
+.titulopais h2 {
+    flex: 1; /* Hace que los títulos ocupen el mismo espacio */
+    text-align: center;
+}
 
 .tcomp {
     gap: 100px;
@@ -1680,10 +1692,6 @@ tbody tr:hover {
     /* Asegura que el texto esté centrado */
 }
 
-.espacio {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 
 .resultados {
     margin-top: 20px;
@@ -1758,4 +1766,13 @@ tbody tr:hover {
     /* Totalmente transparente */
     transition: opacity 1s ease-in-out;
     /* Animación suave de 1 segundo */
+}
+
+.recomendaciones {
+    width: 80%; /* Ajusta el ancho del contenedor interno */
+    margin: 40px auto; /* Margen respecto al contenedor principal y centrado */
+    padding: 20px; /* Espaciado interno */
+    text-align: justify; /* Justifica el texto */
+    background-color: transparent; /* Hace que el contenedor sea "invisible" */
+    border: none; /* Sin bordes */
 }
