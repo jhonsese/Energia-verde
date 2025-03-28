@@ -185,8 +185,8 @@ body {
 /* Controles del mapa personalizados */
 .map-controls {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 8px;
+    left: 8px;
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -1535,6 +1535,14 @@ footer {
     flex: 1 1 250px;
 }
 
+.footer-enlaces {
+    flex: 1 1 250px;
+}
+
+.footer-enlaces h3{
+    color: #000;
+}
+
 .footer-column h3 {
     margin-bottom: 20px;
     font-size: 20px;
@@ -1775,4 +1783,34 @@ tbody tr:hover {
     text-align: justify; /* Justifica el texto */
     background-color: transparent; /* Hace que el contenedor sea "invisible" */
     border: none; /* Sin bordes */
+}
+
+/* Alerta de éxito con diseño compacto */
+.alert-success {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #50ff30; /* Verde llamativo */
+    color: #000;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1000;
+    min-width: 200px;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+/* Clase para mostrar la alerta */
+.alert-success.show {
+    opacity: 1;
+    visibility: visible;
 }

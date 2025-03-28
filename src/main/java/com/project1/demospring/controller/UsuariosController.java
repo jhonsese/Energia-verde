@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -39,13 +40,17 @@ public class UsuariosController {
     @GetMapping("/contacto")
     public String mostrarFormularioContacto(Model model) {
         model.addAttribute("contacto", new Contactanos());
-        return "contacto"; // Nombre de la vista HTML
+        return "usuarios"; // Nombre de la vista HTML
     }
 
     @PostMapping("/contacto")
-    public String guardarContacto(@ModelAttribute Contactanos contacto) {
+    public String guardarContacto(@ModelAttribute Contactanos contacto, RedirectAttributes redirectAttributes) {
         contactanosService.guardarContacto(contacto);
-        return "redirect:/contacto?success"; // Redirecciona con un parámetro de éxito
+        
+        // Agrega un mensaje temporal que desaparecerá después de la redirección
+        redirectAttributes.addFlashAttribute("successMessage", "✅ Te contactaremos en cualquier momento.");
+        
+        return "redirect:/contacto"; // Redirige sin parámetros en la URL
     }
 
 

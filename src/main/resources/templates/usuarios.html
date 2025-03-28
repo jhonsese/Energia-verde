@@ -46,40 +46,42 @@
    <main>
 
       <section class="hero" id="inicio">
+        <div th:if="${successMessage}" class="alert-success">
+            <span th:text="${successMessage}"></span>
+        </div>
          <div class="container-home">
             <h1>Energía Verde</h1>
             <p>Transformamos el mundo con soluciones energéticas renovables que protegen nuestro planeta y garantizan un
                futuro más limpio para las próximas generaciones.</p>
-            <a href="#contacto" class="btn-neon">Obtén más beneficios registrándote</a>
+            <a href="#soluciones" class="btn-neon">Energía renovable: el legado para las futuras generaciones.</a>
          </div>
 
          <!-- Características -->
          <div class="container-home">
             <h2 class="section-title">Nuestras Soluciones Energéticas</h2>
             <div class="features-container">
-               <div class="feature-card">
-                  <div class="feature-icon solar"></div>
-                  <div class="feature-content">
-                     <h3>Energía Solar</h3>
-                     <p>Aprovechamos la potencia del sol con paneles fotovoltaicos de última generación que maximizan la
-                        eficiencia energética y reducen tu huella de carbono.</p>
-                  </div>
-               </div>
-               <div class="feature-card">
-                  <div class="feature-icon wind"></div>
-                  <div class="feature-content">
-                     <h3>Energía Eólica</h3>
-                     <p>Nuestras turbinas eólicas capturan la energía del viento de manera eficiente, proporcionando una
-                        fuente de energía limpia y renovable para hogares y empresas.</p>
-                  </div>
-               </div>
-               <div class="feature-card">
-                  <div class="feature-icon water"></div>
-                  <div class="feature-content">
-                     <h3>Energía Hidráulica</h3>
-                     <p>Utilizamos la fuerza del agua para generar electricidad de manera sostenible, con soluciones
-                        adaptadas a diferentes escalas y necesidades.</p>
-                  </div>
+                <div class="feature-card">
+                    <div class="feature-icon solar"></div>
+                    <div class="feature-content">
+                        <h3>Energía Solar</h3>
+                        <p>La energía solar convierte la luz del sol en electricidad a través de paneles fotovoltaicos, reduciendo costos y emisiones de gases de efecto invernadero.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon wind"></div>
+                    <div class="feature-content">
+                        <h3>Energía Eólica</h3>
+                        <p>La energía eólica utiliza turbinas para transformar la energía del viento en electricidad, siendo una fuente renovable en rápido crecimiento que disminuye la dependencia de combustibles fósiles.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon water"></div>
+                    <div class="feature-content">
+                        <h3>Energía Hidráulica</h3>
+                        <p>La energía hidráulica genera electricidad aprovechando el flujo del agua, ofreciendo una solución eficiente y sostenible que también ayuda en la gestión de recursos hídricos.</p>
+                    </div>
+                </div>
+                </div>
                </div>
             </div>
          </div>
@@ -120,7 +122,6 @@
                   <div id="sidebar">
                      <div class="sidebar-header">
                         <h2><i class="fas fa-map-marker-alt"></i> <span id="country-title">País</span></h2>
-                        <button class="close-btn" onclick="closeSidebar()"><i class="fas fa-times"></i></button>
                      </div>
                      <div class="sidebar-content">
                         <div class="country-flag" id="country-flag">
@@ -235,9 +236,10 @@
                   <div class="eco-info-icon">
                      <i class="fas fa-recycle"></i>
                   </div>
-                  <h3>Economía Circular</h3>
-                  <p>Conoce las estrategias de economía circular que están implementando diferentes países para
-                     minimizar residuos y maximizar recursos.</p>
+                  <h3>Crecimiento Verde</h3>
+                  <p>Observa el crecimiento en producción de energía renovable, para las diferentes regiones 
+                    alrededor del mundo.
+                  </p>
                </div>
             </div>
          </div>
@@ -478,8 +480,10 @@
             <h2 class="section-title h2">Nuestro Equipo</h2>
 
             <div class="team-intro">
-               <p>Contamos con un equipo multidisciplinario de expertos comprometidos con la innovación y sostenibilidad
-                  energética. Cada miembro aporta conocimientos únicos para crear soluciones que transforman el futuro.
+               <p>Creamos un equipo de desarrollo para la elaboración de este sitio web, con el fin de
+                  democratizar el acceso a la información sobre energías renovables y su impacto en el medio ambiente.
+                  Nuestro objetivo es ayudar a las personas a tomar decisiones informadas sobre su consumo energético y
+                  fomentar un futuro más sostenible.</p>
                </p>
             </div>
 
@@ -492,10 +496,9 @@
                      </div>
                   </div>
                   <div class="member-info">
-                     <h3>Ana López</h3>
-                     <p class="member-position">Directora Ejecutiva</p>
-                     <p class="member-bio">Con más de 15 años de experiencia en el sector energético, Ana lidera nuestra
-                        visión de un futuro sostenible con pasión y determinación.</p>
+                     <h3>Alejandro Ríos Cardona</h3>
+                     <p class="member-position">Dev</p>
+                     <p class="member-bio">Tecnologo en analisis y desarrollo de softaware, experiencia en el area.</p>
                      <div class="member-social">
                         <a href="#" class="social-icon linkedin"></a>
                         <a href="#" class="social-icon twitter"></a>
@@ -514,8 +517,7 @@
                   <div class="member-info">
                      <h3>Jhoan Sebastián Ríos Gómez </h3>
                      <p class="member-position">Dev</p>
-                     <p class="member-bio">Ingeniero especializado en sistemas fotovoltaicos, Miguel ha desarrollado
-                        tecnologías innovadoras que mejoran la eficiencia energética.</p>
+                     <p class="member-bio">Tecnologo en analisis y desarrollo de softaware, experiencia en el area.</p>
                      <div class="member-social">
                         <a href="#" class="social-icon linkedin"></a>
                         <a href="#" class="social-icon twitter"></a>
@@ -574,8 +576,7 @@
                <div class="member-info">
                   <h3>Alejandro Quintero</h3>
                   <p class="member-position">Dev</p>
-                  <p class="member-bio">Especialista en implementación de sistemas eólicos, Javier ha liderado
-                     proyectos exitosos en más de 15 países.</p>
+                  <p class="member-bio">Estudiante de bootcamp de desarrollo, y apasionado por las T.I.</p>
                   <div class="member-social">
                      <a href="#" class="social-icon linkedin"></a>
                      <a href="#" class="social-icon twitter"></a>
@@ -604,8 +605,7 @@
                <div class="value-item">
                   <div class="value-icon collaboration"></div>
                   <h4>Colaboración</h4>
-                  <p>Trabajamos junto a comunidades, empresas y gobiernos para crear soluciones energéticas
-                     inclusivas.</p>
+                  <p>Trabajamos juntos, para obtener toda la información proporcionada en este sitio.</p>
                </div>
             </div>
          </div>
@@ -680,16 +680,15 @@
             <div class="footer-content">
                <div class="footer-column">
                   <h3>Energía Verde</h3>
-                  <p>Comprometidos con un futuro sostenible a través de soluciones energéticas renovables e innovadoras.
+                  <p>Se acabo el amor, y si se acabo, entonces era, o nunca fue amor... Todo lo que amas te dejara algun dia.
                   </p>
                </div>
-               <div class="footer-column">
+               <div class="footer-enlaces">
                   <h3>Enlaces rápidos</h3>
                   <ul>
-                     <li><a href="#inicio">Inicio</a></li>
-                     <li><a href="#soluciones">Soluciones</a></li>
-                     <li><a href="#nosotros">Nosotros</a></li>
-                     <li><a href="#contacto">Contacto</a></li>
+                     <li><a href="https://github.com/jhonsese/Energia-verde">Git-hub</a></li>
+                     <li><a href="https://www.eia.gov/international/data/world/total-energy/total-energy-consumption?pd=44&p=0000000010000000000000000000000000000000000000000000000000u06&u=0&f=A&v=mapbubble&a=-&i=none&vo=value&t=C&g=00000000000000000000000000000000000000000000000001&l=249-ruvvvvvfvtvnvv1vrvvvvfvvvvvvfvvvou20evvvvvvvvvvnvvvs0008&s=315532800000&e=1672531200000&vb=44&ev=true">Adjunto enlace de la data obtenida</a></li>
+                     <li><a href="https://youtu.be/eRXY4pnLhmI?si=PwgJpJkj6UFGdR8-">Enlaces que te pueden interesar.</a></li>
                   </ul>
                </div>
                <div class="footer-column">
@@ -723,6 +722,7 @@
    <script th:href="@{/assets/app.js}"></script>
    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+   <script src="/js/app.js"></script>
    <script src="/js/mapa.js"></script>
    <script src="/js/tablas.js"></script>
    </body>
